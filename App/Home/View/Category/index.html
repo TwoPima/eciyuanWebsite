@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+ <html lang="zh-cn">
+ <head><include file="Public:head"/></head>
+ <body>
+ <div class="container-fluid">
+ 		<include file="Public:header"/>
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+           	 <div class="blog-header text-center">
+		        <h3 class="blog-post-title">{$detail[0]['title']|msubstr=0,53,'utf-8',false}</h3>
+		     </div>
+           	<div class="blog-content">{$detail[0]['content']}</div>
+           <!-- 	<nav>
+            <ul class="pager">
+              <li><a href="#">Previous</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </nav> 
+          	<!-- <div class="paging_next">
+								<span class="paging_left">
+								<if condition="$front.id eq ''">
+									没有文章了！
+									<else/>
+									<a href="__URL__/detail?id={$front.id}&mo=Notice">{$front.name}</a>
+								 </if>
+								</span>
+								<span class="paging_right">
+								<if condition="$after.id eq ''">
+									没有文章了！
+								<else/>
+								<a href="__URL__/detail?id={$after.id}&mo=Notice">{$after.name}</a>
+								</if>
+								</span>
+							</div> -->
+          </div>
+        <div class="col-sm-2 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>栏目介绍</h4>
+            <ol class="list-unstyled">
+            <volist name="CateName" id="val">
+              <li><i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="__APP__/Home/Category?id={$val.id}&pid={$val.pid}">{$val.name}</a></li>
+            </volist>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>标签搜索</h4>
+           <div id="tagscloud">
+           <a href="" class="tagc1" title="">微信建设</a>
+           <a href="" class="tagc2" title="">微店装修</a>
+           <a href="" class="tagc5" title="">微信公众号二次开发</a>
+           <a href="" class="tagc1" title="">淘宝装修</a>
+          </div>
+        </div><!-- /.blog-sidebar -->
+      </div><!-- /.row -->
+  <!--   <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer> -->
+ 	<include file="Public:footer"/>
+ 	<script src='__HOMEJS__/tagCloud/tagscloud.js' language='javascript'></script>
+ 	</div>
+ </body>
+ </html>

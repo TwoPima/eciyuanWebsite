@@ -1,0 +1,168 @@
+/* 全局定义 */
+*{
+	margin:0;
+	padding:0;
+	text-decoration:none;
+}
+body{
+	font-family:Microsoft Yahei, '微软雅黑', Arial, sans-serif;
+	font-size:16px;
+}
+.container-fluid{border:1px solid red;padding:0px;}
+/* 导航条开始 */
+.nav-body{
+	z-index:99;
+	background-color: #55504C;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+.nav-body ul{
+	float:right;
+	background:#55504C;
+}
+.navbar-nav li{
+}
+.navbar-nav li a{font-size:10px;color:white; font-weight:bold;}
+.navbar-nav li a:link {TEXT-DECORATION: none;background:none;}    /* 未访问的链接 */
+.navbar-nav  li a:visited {TEXT-DECORATION: none;background:none;}  /* 已访问的链接 */
+.navbar-nav li a:hover {COLOR: #F39B0E;background:none;text-decoration: underline;} /* 当有鼠标悬停在链接上 */
+.navbar-nav  li a:active {COLOR: #F39B0E; background:none; text-decoration: underline;}   /* 被选择的链接 */
+/* 导航条结束 */
+/* 案例开始 */
+.case-details-container{
+	padding-left:10%;
+	padding-right:10%;
+	height:250px;
+}
+.case-details-left{
+
+	float:left;
+	border:1px solid red;
+	height:100%;
+}
+.case-details-right{
+	float:right;
+	border:1px solid blue;
+	height:100%;
+}
+/* 案例结束 */
+/* 资讯信息开始 */
+.news-list{width:100%;height:210px;}
+.News-head{height:20%;}
+.news-head-1{font-weight:bold;border:1px solid blue;padding-left:40%;}
+.news-list .tab-content{height:80%;}
+.tab-pane-control{background:#ECF0F1;}
+.tab-pane-control li{height:170px;float:left;}
+/* 资讯信息结束 */
+/* 图片展示2 */
+.img-list-2{
+	clear:both;
+	height:415px;
+}
+.img-list-detail{
+	height:355px;
+}
+/* 图片展示2 */
+/* 友情链接开始*/
+#friendLinklunboControl{
+	clear:both;
+	width:100%;
+	height:100px;
+	background-color:white;
+}
+.link-details ul{
+	 display: inline-block;
+}
+.link-details li{
+	float:right;
+	margin-left:10px;
+}
+/* 友情链接结束*/
+
+
+/*
+ * Blog name and description
+ */
+
+.blog-header {
+  padding-bottom: 20px;
+}
+
+.blog-content {
+	
+}
+/*
+ * Main column and sidebar layout
+ */
+
+.blog-main {
+	  font-size: 18px;
+	  line-height: 1.5;
+	border-right: 3px solid #dddddd;
+}
+.row{
+	  margin-top: 40px;
+}
+
+/* Sidebar modules for boxing content */
+.sidebar-module h4 {
+	height: 40px;
+	display: block;
+	font: 14px/40px "Microsoft Yahei";
+	color: #000;
+	border-bottom: 1px solid #dddddd;
+}
+.sidebar-module {
+  padding: 15px;
+  margin: 0 -15px 15px;
+	background-color: #f5f5f5;
+  border-radius: 4px;
+}
+.sidebar-module ol li {
+	font: 12px/40px "songti";
+	color: #7f7f7f;
+	margin-left: 10px;
+	height: 40px;
+	display: block;
+	border-bottom: 1px solid #dddddd;
+}
+.sidebar-module ol li i{
+	margin-right:5px;
+}
+/*  标签云*/
+#tagscloud{width:240px;height:250px;position:relative;font-size:12px;color:#333;margin:20px auto 0;text-align:center;}
+#tagscloud a{position:absolute;top:0px;left:0px;color:#333;font-family:Arial;text-decoration:none;}
+#tagscloud a:hover{color:#fff;padding:5px;display:block;background:#D02F53;}
+#tagscloud a.tagc1{margin:0 10px 15px 0;line-height:18px;width:65px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#666;color:#fff;}
+#tagscloud a.tagc2{margin:0 10px 15px 0;line-height:18px;width:60px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#F16E50;color:#fff;}
+#tagscloud a.tagc5{margin:0 10px 15px 0;line-height:18px;width:70px;text-align:center;font-size:12px;padding:1px 5px;white-space:nowrap;display:inline-block;border-radius:3px;background:#006633;color:#fff;}
+
+/* Pagination */
+.pager {
+  margin-bottom: 60px;
+  text-align: left;
+}
+.pager > li > a {
+  width: 140px;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 30px;
+}
+
+
+/*
+ * Blog posts
+ */
+
+.blog-post {
+  margin-bottom: 60px;
+}
+
+.blog-post-meta {
+  margin-bottom: 20px;
+  color: #999;
+}
+
+/* 导航二级页面结束 */
+
+
+
