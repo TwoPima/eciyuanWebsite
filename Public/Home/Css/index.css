@@ -91,7 +91,7 @@ body{
 	width:5%;
 }
 .footer-right {width:45%;height:100%;float:right;padding-top:10%;}
-.footer-right ul {height:20%}
+.footer-right ul {}
 .footer-right ul li{font-size:15px;}
 /* page footer end */
 
