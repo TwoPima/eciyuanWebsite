@@ -61,7 +61,7 @@ class CategoryController extends ComController {
 	public function add(){
 		
 		$pid = isset($_GET['pid'])?intval($_GET['pid']):0;
-		$category = M('category')->field('id,pid,name,link')->order('o asc')->select();
+		$category = M('category')->field('id,pid,name,link,tag')->order('o asc')->select();
 		$tree = new Tree($category);
 		$str = "<option value=\$id \$selected>\$spacer\$name</option>"; //生成的形式
 		$category = $tree->get_tree(0,$str, $pid);
@@ -87,6 +87,7 @@ class CategoryController extends ComController {
 		$data['keywords'] = isset($_POST['keywords'])?strip_tags(trim($_POST['keywords'])):'';
 		$data['description'] = isset($_POST['description'])?strip_tags(trim($_POST['description'])):'';
 		$data['link'] = isset($_POST['link'])?trim($_POST['link']):'';
+		$data['tag'] = isset($_POST['tag'])?trim($_POST['tag']):'';
 		$data['o'] = isset($_POST['o'])?intval($_POST['o']):0;
 		if(!$data['name']){
 			die('0');

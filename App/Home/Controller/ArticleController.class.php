@@ -5,30 +5,14 @@
 * 作    者：马晓成<857773627@qq.com>
 * 日    期：2016-04-21
 * 版    本：1.0.0
-* 功能说明：前台控制器演示。
+* 功能说明：前台控制器_产品展示。
 *
 **/
 namespace Home\Controller;
 use Think\Controller;
 use Vendor\Page;
-class IndexController extends ComController {
+class ArticleController extends ComController {
     public function index(){
-        //资讯信息
-        $whereNewsIndustry['tag']="industry";
-        $whereTrends['tag']="trends";
-        $whereSkill['tag']="skill";
-        $parentIndustryId=M('Category')->where($whereNewsIndustry)->field('id')->find();
-        $parentNewsTrendsId=M('Category')->where($whereTrends)->field('id')->find();
-        $parentNewsSkillId=M('Category')->where($whereSkill)->field('id')->find();
-        $newsIndustry=M('Article')->where('sid='.$parentIndustryId['id'])->order("aid desc")->limit(5)->select();
-        $newsTrends=M('Article')->where('sid='.$parentNewsTrendsId['id'])->order("aid desc")->limit(5)->select();
-        $newsSkill=M('Article')->where('sid='.$parentNewsSkillId['id'])->order("aid desc")->limit(5)->select();
-        $this->assign('newsIndustry',$newsIndustry);
-        $this->assign('trends',$newsTrends);
-        $this->assign('skill',$newsSkill);
-        //案例成果
-        $case=M('Article')->where('type=1')->order("aid desc")->limit(5)->select();
-        $this->assign('case',$case);
 		$this -> display();
     }
 	

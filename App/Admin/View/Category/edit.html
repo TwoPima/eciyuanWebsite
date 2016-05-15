@@ -101,6 +101,15 @@
 											</span>
 										</div>
 									</div>
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2">标示 </label>
+										<div class="col-sm-9">
+											<input type="text" name="tag" id="tag" placeholder="tag" class="col-xs-10 col-sm-5" value="{$currentcategory.tag}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">非开发人员不要动，前台每个栏目的唯一标示</span>
+											</span>
+										</div>
+									</div>
 
 									<div class="col-md-offset-2 col-md-9">
 										<button class="btn btn-info submit" type="button">
@@ -138,6 +147,7 @@
 				var name = $("#name").val();
 				var o= $("#o").val();
 				var link= $("#link").val();
+				var tag= $("#tag").val();
 				if(name==''){
 					bootbox.dialog({
 						message: "抱歉，分类名称不能为空。", 
@@ -150,10 +160,8 @@
 					});
 					return;
 				}
-				$.post("{:U('update')}", {id:id,pid:pid,name:name,keywords:keywords,description:description,link:link,o:o},
+				$.post("{:U('update')}", {id:id,pid:pid,name:name,keywords:keywords,description:description,link:link,tag:tag,o:o},
 					function(data){
-					alert(data);
-					alert(link);
 					if(data==1){
 						bootbox.dialog({  
 							message: "恭喜，数据提交成功。",  
