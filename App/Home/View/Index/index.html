@@ -140,15 +140,22 @@
 		            <h2><i class="fa fa-briefcase" aria-hidden="true"></i>案例成果</h2>
 		            </div>
 		            <hr/>
-		            <vol
-		            <div class="case-details-left">
-		                <img class="lazy" alt="项目图片展示" src="http://www.apicloud.com/img/new/case-count-1.png" style="display: block;">
-		            </div>
-		            <div class="case-details-right">
-		                    <div class="case-name"><h3>项目名称</h3></div>
-		           			 <div class="case-type"><footer>项目类型</footer></div>
-		                    <div class="case-intro">春秋航空总部位于上海，共飞九十多条国内外航线及旅游胜地的航线。</div>
-		            </div>
+		            <volist name="case" id="val">
+			            <div class="case-body">
+				            <div class="case-details-left">
+				                <img class="case-img" alt="项目图片展示" src=".{$val.thumbnail}" style="display: block;">
+				            </div>
+				            <div class="padding"></div>
+				            <div class="case-details-right">
+				                    <div class="case-name"><h4>{$val.title}</h4></div>
+				           			 <div class="case-type"><footer>{$val.type}</footer></div>
+				                    <div class="case-intro">{$val.description}</div>
+				            </div>
+				            </div>
+				            <div class="case-footer">
+				            <p><a class="btn btn-default" href="__APP__/Home/Case/detail?aid={$val.aid}&sid={$val.sid}" role="button">详细信息 &raquo;</a></p>
+				            </div>
+		            </volist>
 			</div>
 			 <!--案例结束  -->
 			 <!-- 图片展示2 -->
@@ -169,20 +176,20 @@
 				    </div>
 				</div>
 			 <!-- 图片展示2 -->
-				 <!--  友情链接开始-->
-            <div id="friendLinkControl">
-			  <div class="link-name text-center">
+				 <!--  合作伙伴开始-->
+            <div class="text-center" id="friendLinkControl">
+			 	<div class="link-name text-center">
 	            <h2><i class="fa fa-link" aria-hidden="true"></i>合作伙伴</h2>
 	           </div>
 	            <div class="link-details text-center">
-	            <ul  class="list-unstyled">
-	            <volist name="links" id="val">
-	          	  <li><a href="{$val.url}" target="_blank">{$val.title}</a></li>
-	            </volist>
-	            </ul>
+		            <ul  class="list-unstyled">
+			            <volist name="links" id="val">
+			          	  <li><a href="{$val.url}" target="_blank">{$val.title}</a></li>
+			            </volist>
+		            </ul>
 	            </div>
 			</div>
-			 	 <!--  友情链接结束-->
+			 	 <!--  合作伙伴结束-->
 			 	  <!--百度地图容器-->
 			 	 <div class="footer-control text-center">
 	   				 <div class="footer-left" id="map"></div>

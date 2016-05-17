@@ -16,12 +16,12 @@ use Vendor\Tree;
 class CaseController extends ComController {
 
 	public function add(){
-		
-		$categoryCase = M('CategoryCase')->field('id,pid,name')->order('o asc')->select();
+		$whereType['type']="1";
+		$categoryCase = M('Category')->where($whereType)->field('id,pid,name')->order('o asc')->select();
 		$tree = new Tree($categoryCase);
 		$str = "<option value=\$id \$selected>\$spacer\$name</option>"; //生成的形式
 		$categoryCase = $tree->get_tree(0,$str,0);
-		$this->assign('categoryCase',$categoryCase);//导航
+		$this->assign('category',$categoryCase);//导航
 		$this -> display();
 	}
 		
@@ -40,7 +40,7 @@ class CaseController extends ComController {
 			$where = '';
 		}
 		$count = $Case->where($where)->count();
-		$list  = $Case->field("{$prefix}Case.*,{$prefix}category_Case.name")->where($where)->order("{$prefix}Case.aid desc")->join("{$prefix}category_Case ON {$prefix}category_Case.id = {$prefix}Case.sid")->limit($offset.','.$pagesize)->select();
+		$list  = $Case->field("{$prefix}Case.*,{$prefix}category.name")->where($where)->order("{$prefix}Case.aid desc")->join("{$prefix}category ON {$prefix}category.id = {$prefix}Case.sid")->limit($offset.','.$pagesize)->select();
 		
 		$page	=	new \Think\Page($count,$pagesize); 
 		$page = $page->show();
@@ -77,11 +77,11 @@ class CaseController extends ComController {
 		$Case = M('Case')->where('aid='.$aid)->find();
 		if($Case){
 			
-			$categoryCase = M('categoryCase')->field('id,pid,name')->order('o asc')->select();
+			$categoryCase = M('category')->field('id,pid,name')->order('o asc')->select();
 			$tree = new Tree($categoryCase);
 			$str = "<option value=\$id \$selected>\$spacer\$name</option>"; //生成的形式
 			$categoryCase = $tree->get_tree(0,$str,$Case['sid']);
-			$this->assign('categoryCase',$categoryCase);//导航
+			$this->assign('category',$categoryCase);//导航
 			
 			$this->assign('Case',$Case);
 		}else{

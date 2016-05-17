@@ -31,18 +31,27 @@ body{
 .case-details-container{
 	padding-left:10%;
 	padding-right:10%;
-	height:250px;
+}
+.case-body{
+	height:300px;
 }
 .case-details-left{
-
 	float:left;
-	border:1px solid red;
 	height:100%;
+	width:50%;
 }
 .case-details-right{
 	float:right;
-	border:1px solid blue;
 	height:100%;
+	width:40%;
+}
+.case-img{
+	height:100%;
+	width:100%;
+}
+.case-footer{
+	margin-top:10px;
+	margin-bottom:10px;
 }
 /* 案例结束 */
 /* 资讯信息开始 */
@@ -63,7 +72,7 @@ body{
 	height:355px;
 }
 /* 图片展示2 */
-/* 友情链接开始*/
+/* 合作伙伴开始*/
 #friendLinkControl a{
 		color:#777;
 }
@@ -74,6 +83,13 @@ body{
 	background-color:white;
 	color:#777;
 }
+.link-name{
+	height:50%;
+}
+.link-details{
+	height:50%;
+}
+.padding-top10{}
 .link-details ul{
 	 display: inline-block;
 }
@@ -82,7 +98,7 @@ body{
 	margin-left:10px;
 	color:black;
 }
-/* 友情链接结束*/
+/* 合作伙伴结束*/
 /* page footer start */
 .footer-control{height:550px;}
 .footer-control a{color:#777;}

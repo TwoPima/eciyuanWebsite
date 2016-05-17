@@ -29,6 +29,7 @@ class SettingController extends ComController {
 		$data['keywords'] = isset($_POST['keywords'])?strip_tags($_POST['keywords']):'';
 		$data['description']= isset($_POST['description'])?strip_tags($_POST['description']):'';
 		$data['footer'] = isset($_POST['footer'])?$_POST['footer']:'';
+		$data['logo'] = isset($_POST['logo'])?$_POST['logo']:'';
 		$Model = M('setting');
 		foreach($data as $k=>$v){
 			$Model->data(array('v'=>$v))->where("k='{$k}'")->save();

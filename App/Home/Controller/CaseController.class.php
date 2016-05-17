@@ -5,39 +5,38 @@
 * 作    者：马晓成<857773627@qq.com>
 * 日    期：2016-04-21
 * 版    本：1.0.0
-* 功能说明：前台控制器演示。
+* 功能说明：前台控制器_产品展示。
 *
 **/
 namespace Home\Controller;
 use Think\Controller;
 use Vendor\Page;
-class IndexController extends ComController {
+class CaseController extends ComController {
     public function index(){
-        //资讯信息
-        $whereNewsIndustry['tag']="industry";
-        $whereTrends['tag']="trends";
-        $whereSkill['tag']="skill";
-        $parentIndustryId=M('Category')->where($whereNewsIndustry)->field('id')->find();
-        $parentNewsTrendsId=M('Category')->where($whereTrends)->field('id')->find();
-        $parentNewsSkillId=M('Category')->where($whereSkill)->field('id')->find();
-        $newsIndustry=M('Article')->where('sid='.$parentIndustryId['id'])->order("aid desc")->limit(5)->select();
-        $newsTrends=M('Article')->where('sid='.$parentNewsTrendsId['id'])->order("aid desc")->limit(5)->select();
-        $newsSkill=M('Article')->where('sid='.$parentNewsSkillId['id'])->order("aid desc")->limit(5)->select();
-        $this->assign('newsIndustry',$newsIndustry);
-        $this->assign('trends',$newsTrends);
-        $this->assign('skill',$newsSkill);
-        //案例成果
-        $case=M('Case')->order("aid desc")->limit(5)->select();
-        $this->assign('case',$case);
 		$this -> display();
     }
-	
+	public function detail(){
+	    //提取栏目内容
+	    $where['id']=$_GET['sid'];
+	    $result=M('Category')->where($where)->select();
+	    $this->assign('CateName',$result);
+	    //提取文章详情
+	    $detail=M('Case')->where("aid=".$_GET['aid'])->select();
+	    //上一篇
+	    $front=M('Case')->where("aid<".$_GET['aid'])->order('aid desc')->find();
+	    //下一篇
+	    $after=M('Case')->where("aid>".$_GET['aid'])->order('aid desc')->find();
+	    $this->assign('detail',$detail);
+	    $this->assign('front',$front);//上一条
+	    $this->assign('after',$after);//下一条
+	    $this->display();
+	}
 	//单页
     public function single($aid){
 		
 		$aid = intval($aid);
-		$article = M('article')->where('aid='.$aid)->find();
-		$this->assign('article',$article);
+		$Case = M('Case')->where('aid='.$aid)->find();
+		$this->assign('Case',$Case);
 		$this->assign('nav',$aid);
 		$this -> display();
     }
@@ -45,15 +44,13 @@ class IndexController extends ComController {
     public function article($aid){
 		
 		$aid = intval($aid);
-		$article = M('article')->where('aid='.$aid)->find();
-		$sort = M('asort')->field('name,id')->where("id='{$article['sid']}'")->find();
-		$this->assign('article',$article);
-		$this->assign('sort',$sort);
+		$Case = M('Case')->where('aid='.$aid)->find();
+		$this->assign('Case',$Case);
 		$this -> display();
     }
 	
 	//列表
-    public function articlelist($sid='',$p=1){
+    public function Caselist($sid='',$p=1){
 		$sid = intval($sid);
 		$p = intval($p)>=1?$p:1;
 		$sort = M('asort')->field('name,id')->where("id='$sid'")->find();
@@ -67,7 +64,7 @@ class IndexController extends ComController {
 		}
 		$sids = implode(',',$sids);
 
-		$m = M('article');
+		$m = M('Case');
 		$pagesize = 2;#每页数量
 		$offset = $pagesize*($p-1);//计算记录偏移量
 		$count = $m->where("sid in($sids)")->count();

@@ -10,7 +10,13 @@
 		        <h3 class="blog-post-title">{$detail[0]['title']|msubstr=0,53,'utf-8',false}</h3>
 		     </div>
            	<div class="blog-content">{$detail[0]['content']}</div>
-          </div>
+          <!-- 	<nav>
+            <ul class="pager">
+              <li><a href="__URL__/detail?aid={$front.aid}&sid={$front.sid}">{$front.title}</a></li>
+              <li><a href="__URL__/detail?aid={$after.aid}&sid={$after.sid}">{$after.title}</a></li>
+            </ul>
+          </nav> -->
+         </div>
         <div class="col-sm-2 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module">
             <h4>栏目介绍</h4>
@@ -23,7 +29,6 @@
           <include file="Public:tag"/>
       </div><!-- /.row -->
  	<include file="Public:footer"/>
- 	<script src='__HOMEJS__/tagCloud/tagscloud.js' language='javascript'></script>
  	</div>
  </body>
  </html>
