@@ -98,6 +98,7 @@ class CaseController extends ComController {
 		$data['description'] = I('post.description','','strip_tags');
 		$data['content'] = isset($_POST['content'])?$_POST['content']:false;
 		$data['thumbnail'] = I('post.thumbnail','','strip_tags');
+		$data['logo'] = I('post.logo','','strip_tags');
 		$data['t'] = time();
 		if(!$data['sid'] or !$data['title'] or !$data['content']){
 			$this->error('警告！分类、标题及内容为必填项目。');

@@ -1,6 +1,6 @@
 /*默认蓝色*/
 .SonlineBox{ width:162px; font-size:12px;overflow:hidden; z-index:9999;}
-.SonlineBox .openTrigger{ width:30px; height:110px; position:absolute; top:0px;  z-index:1; cursor:pointer;  background:#0176ba url(../images/openTrigger.jpg) no-repeat;}
+.SonlineBox .openTrigger{border:1px solid red; width:30px; height:110px; position:absolute; top:0px;  z-index:1; cursor:pointer;  background:#0176ba url(../images/openTrigger.jpg) no-repeat;}
 .SonlineBox .titleBox{ width:158px; height:35px; line-height:35px; background:#038bdc url(../images/SonlineTitleBg.gif) repeat-x; border-bottom:2px solid #0176ba;}
 .SonlineBox .titleBox span{ margin-left:10px; color:#fff; font-size:14px; font-family:'微软雅黑','黑体';}
 .SonlineBox .contentBox{ width:158px; height:auto; border:2px solid #0176ba; background:#fff; position:absolute; z-index:2;}

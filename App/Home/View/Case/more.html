@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+ <html lang="zh-cn">
+ <head><include file="Public:head"/></head>
+ <body>
+ <div class="container-fluid">
+ 	<include file="Public:header"/>
+ 	<div class="height30px"></div>
+ 	<div class="height30px"></div>
+ 	<div class="blog-more ">
+ 		 <div class="row">
+	 	 	<volist name="article_list" id="val">
+		        <div class="col-lg-4 text-center">
+		        <a href="__APP__/Home/Case/detail?sid={$val.sid}&aid={$val.aid}" target="_blank">
+		         	<img  alt="Responsive image" class="img-responsive " alt="项目图片展示" src="__ROOT__/{$val.thumbnail}" >
+		        <p class="text-center">{$val.title}</p>
+		        </a>
+		        </div>
+		        </volist>
+	      </div><!-- /.row -->
+      </div>
+ 	</div>
+ 	</div>
+ 		<include file="Public:footer" />
+ 	<script src='__HOMEJS__/tagCloud/tagscloud.js' language='javascript'></script>
+ </body>
+ </html>

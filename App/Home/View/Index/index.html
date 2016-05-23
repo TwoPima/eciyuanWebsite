@@ -141,7 +141,7 @@
 							    <volist name="case" id="val">
 								   <div class="col-md-4" id="col-md-4-control">
 								      <div class="case-img">
-								      	<img  alt="Responsive image" class="img-responsive " alt="项目图片展示" src="__HOMEIMAGES__/subDetail4.jpg" style="display: block;">
+								      	<img  alt="Responsive image" class="img-responsive " alt="项目图片展示" src="__ROOT__/{$val.thumbnail}" style="display: block;">
 								      </div>
 								       <div class="case-details text-center">
 							           		<a href="__APP__/Home/Case/detail?sid={$val.sid}&aid={$val.aid}" target="_blank">
@@ -154,13 +154,11 @@
 							   </volist>
 						 	 </div>
 						  	 <div class="case-footer">
-					            <p><a class="btn btn-default" href="__APP__/Home/Case/Caselist?aid={$val.aid}&sid={$val.sid}" role="button">更多信息 &raquo;</a></p>
+					            <p><a class="btn btn-default" href="__APP__/Home/Case/more?aid={$val.aid}&sid={$val.sid}" role="button">更多信息 &raquo;</a></p>
 					       	</div>
 					</div>
 			</div>
 			 <!--案例结束  -->
-			 <div class="height30px"></div>
-			 <div class="height30px"></div>
 			 <!-- 图片展示2 -->
 			 <div class="img-list-2 text-center">
 					<div class="row ">

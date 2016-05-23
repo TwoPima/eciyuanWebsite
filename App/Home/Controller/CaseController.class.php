@@ -50,26 +50,14 @@ class CaseController extends ComController {
     }
 	
 	//列表
-    public function Caselist($sid='',$p=1){
-		/*
-		 * 进入后判断是否只有一条数据
-		 * 如果是一条数据详细展示；
-		 */
-		$model=M('Case');
-		    $whereId=$model->order('o ASC')->select();
+    public function more(){
+		    $model=M('Case');
+		    $article_list=$model->order('t ASC')->select();
 		    $count =$model->count();
-		    if ($count==1) {
-		        $article_list=$model->order('0 ASC')->find();
-		        $this->assign('article_list',$article_list);
-		    }else {
-		        $article_list=$model->order('0 ASC')->find();
-		        $this->assign('article_list',$article_list);
-		        $page = new Page($count,10);
-		        $showPage = $page->show();
-		        $this->assign("page", $showPage);
-		        $this->display();
-		    }
-		    	
-		
-    }
+		    $page	=	new \Think\Page($count,10);
+	        $showPage = $page->show();
+	        $this->assign('article_list',$article_list);
+	        $this->assign("page", $showPage);
+	        $this->display();
+	}
 }
