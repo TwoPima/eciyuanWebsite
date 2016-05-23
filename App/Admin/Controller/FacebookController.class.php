@@ -25,7 +25,7 @@ class FacebookController extends ComController {
 			$data['v'] = THINK_VERSION;
 			$data['url'] = $_SERVER['SERVER_NAME'];
 
-			$url="http://qwadmin.qiawei.com/index.php/api/facebook/add";
+			//$url="http://qwadmin.qiawei.com/index.php/api/facebook/add";
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_HEADER, 0);  
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

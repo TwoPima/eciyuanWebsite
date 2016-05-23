@@ -25,6 +25,14 @@ class ArticleController extends ComController {
 		$this->assign('nav',$aid);
 		$this -> display();
     }
+	//尾部的处理
+    public function footerDetail($word){
+		$where['tag']=$_GET['word'];
+		$cate=M('Category')->where($where)->field("id")->find();
+		$article = M('Article')->where("sid='{$cate['id']}'")->find();
+		$this->assign('detail',$article);
+		$this -> display('index');
+    }
 	//文章
     public function article($aid){
 		

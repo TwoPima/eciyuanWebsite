@@ -27,7 +27,7 @@ class IndexController extends ComController {
         $this->assign('trends',$newsTrends);
         $this->assign('skill',$newsSkill);
         //案例成果
-        $case=M('Case')->order("aid desc")->limit(5)->select();
+        $case=M('Case')->order("aid desc")->limit(6)->select();
         $this->assign('case',$case);
 		$this -> display();
     }
@@ -88,5 +88,19 @@ class IndexController extends ComController {
 		$this->assign('n',$count);
 
 		$this -> display();
+    }
+    /*  表单反馈*/
+    public function feedback(){
+        $data['name'] = isset($_POST['name'])?$_POST['name']:false;
+        $data['email'] = isset($_POST['email'])?$_POST['email']:false;
+        $data['content'] = isset($_POST['content'])?$_POST['content']:false;
+        $data['create_time'] = time();
+        $aid = M('Feedback')->data($data)->add();
+        if($aid){
+            addlog('新增文章，AID：'.$aid);
+            $this->success('恭喜！文章新增成功！');
+        }else{
+            $this->error('抱歉，未知错误！');
+        }
     }
 }

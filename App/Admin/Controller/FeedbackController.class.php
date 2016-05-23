@@ -13,15 +13,15 @@ namespace Admin\Controller;
 use Admin\Controller\ComController;
 use Vendor\Tree;
 
-class CaseController extends ComController {
+class FeedbackController extends ComController {
 
 	public function add(){
 		$whereType['type']="1";
-		$categoryCase = M('Category')->where($whereType)->field('id,pid,name')->order('o asc')->select();
-		$tree = new Tree($categoryCase);
+		$categoryFeedback = M('Category')->where($whereType)->field('id,pid,name')->order('o asc')->select();
+		$tree = new Tree($categoryFeedback);
 		$str = "<option value=\$id \$selected>\$spacer\$name</option>"; //生成的形式
-		$categoryCase = $tree->get_tree(0,$str,0);
-		$this->assign('category',$categoryCase);//导航
+		$categoryFeedback = $tree->get_tree(0,$str,0);
+		$this->assign('category',$categoryFeedback);//导航
 		$this -> display();
 	}
 		
@@ -30,17 +30,17 @@ class CaseController extends ComController {
 		$sid = intval($sid);
 		$p = intval($p)>0?$p:1;
 		
-		$Case = M('Case');
+		$Feedback = M('Feedback');
 		$pagesize = 20;#每页数量
 		$offset = $pagesize*($p-1);//计算记录偏移量
 		$prefix = C('DB_PREFIX');
 		if($sid){
-			$where = "{$prefix}Case.sid=$sid";
+			$where = "{$prefix}Feedback.sid=$sid";
 		}else{
 			$where = '';
 		}
-		$count = $Case->where($where)->count();
-		$list  = $Case->field("{$prefix}Case.*,{$prefix}category.name")->where($where)->order("{$prefix}Case.aid desc")->join("{$prefix}category ON {$prefix}category.id = {$prefix}Case.sid")->limit($offset.','.$pagesize)->select();
+		$count = $Feedback->where($where)->count();
+		$list  = $Feedback->field("{$prefix}Feedback.*,{$prefix}category.name")->where($where)->order("{$prefix}Feedback.aid desc")->join("{$prefix}category ON {$prefix}category.id = {$prefix}Feedback.sid")->limit($offset.','.$pagesize)->select();
 		
 		$page	=	new \Think\Page($count,$pagesize); 
 		$page = $page->show();
@@ -59,7 +59,7 @@ class CaseController extends ComController {
 			}else{
 				$map = 'aid='.$aids;
 			}
-			if(M('Case')->where($map)->delete()){
+			if(M('Feedback')->where($map)->delete()){
 				addlog('删除文章，AID：'.$aids);
 				$this->success('恭喜，删除成功！');
 			}else{
@@ -74,15 +74,16 @@ class CaseController extends ComController {
 	public function edit($aid){
 		
 		$aid = intval($aid);
-		$Case = M('Case')->where('aid='.$aid)->find();
-		if($Case){
-			$categoryCase = M('category')->field('id,pid,name')->order('o asc')->select();
-			$tree = new Tree($categoryCase);
-			$str = "<option value=\$id \$selected>\$spacer\$name</option>"; //生成的形式
-			$categoryCase = $tree->get_tree(0,$str,$Case['sid']);
-			$this->assign('categoryCase',$categoryCase);//导航
+		$Feedback = M('Feedback')->where('aid='.$aid)->find();
+		if($Feedback){
 			
-			$this->assign('Case',$Case);
+			$categoryFeedback = M('category')->field('id,pid,name')->order('o asc')->select();
+			$tree = new Tree($categoryFeedback);
+			$str = "<option value=\$id \$selected>\$spacer\$name</option>"; //生成的形式
+			$categoryFeedback = $tree->get_tree(0,$str,$Feedback['sid']);
+			$this->assign('category',$categoryFeedback);//导航
+			
+			$this->assign('Feedback',$Feedback);
 		}else{
 			$this->error('参数错误！');
 		}
@@ -103,11 +104,11 @@ class CaseController extends ComController {
 			$this->error('警告！分类、标题及内容为必填项目。');
 		}
 		if($aid){
-			M('Case')->data($data)->where('aid='.$aid)->save();
+			M('Feedback')->data($data)->where('aid='.$aid)->save();
 			addlog('编辑信息，AID：'.$aid);
 			$this->success('恭喜！编辑成功！');
 		}else{
-			$aid = M('Case')->data($data)->add();
+			$aid = M('Feedback')->data($data)->add();
 			if($aid){
 				addlog('新增内容，AID：'.$aid);
 				$this->success('恭喜！新增成功！');

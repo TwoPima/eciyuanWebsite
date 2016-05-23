@@ -51,39 +51,25 @@ class CaseController extends ComController {
 	
 	//列表
     public function Caselist($sid='',$p=1){
-		$sid = intval($sid);
-		$p = intval($p)>=1?$p:1;
-		$sort = M('asort')->field('name,id')->where("id='$sid'")->find();
-		if(!$sort) {
-			$this -> error('参数错误！');
-		}
-		$sorts = M('asort')->field('id')->where("id='$sid' or pid='$sid'")->select();
-		$sids = array();
-		foreach($sorts as $k=>$v){
-			$sids[] = $v['id'];
-		}
-		$sids = implode(',',$sids);
-
-		$m = M('Case');
-		$pagesize = 2;#每页数量
-		$offset = $pagesize*($p-1);//计算记录偏移量
-		$count = $m->where("sid in($sids)")->count();
-		$list  = $m->field('aid,title,description,thumbnail,t')->where("sid in($sids)")->order("aid desc")->limit($offset.','.$pagesize)->select();
-		//echo $m->getlastsql();
-		$params = array(
-			'total_rows'=>$count, #(必须)
-			'method'    =>'html', #(必须)
-			'parameter' =>"/list-{$sid}-?.html",  #(必须)
-			'now_page'  =>$p,  #(必须)
-			'list_rows' =>$pagesize, #(可选) 默认为15
-		);
-		$page = new Page($params);
-		$this->assign('list',$list);	
-		$this->assign('page',$page->show(1));
-		$this->assign('sort',$sort);
-		$this->assign('p',$p);
-		$this->assign('n',$count);
-
-		$this -> display();
+		/*
+		 * 进入后判断是否只有一条数据
+		 * 如果是一条数据详细展示；
+		 */
+		$model=M('Case');
+		    $whereId=$model->order('o ASC')->select();
+		    $count =$model->count();
+		    if ($count==1) {
+		        $article_list=$model->order('0 ASC')->find();
+		        $this->assign('article_list',$article_list);
+		    }else {
+		        $article_list=$model->order('0 ASC')->find();
+		        $this->assign('article_list',$article_list);
+		        $page = new Page($count,10);
+		        $showPage = $page->show();
+		        $this->assign("page", $showPage);
+		        $this->display();
+		    }
+		    	
+		
     }
 }
