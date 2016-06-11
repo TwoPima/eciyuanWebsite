@@ -25,23 +25,12 @@ class FeedbackController extends ComController {
 		$this -> display();
 	}
 		
-	public function index($sid=0,$p=1){
-		
-		$sid = intval($sid);
-		$p = intval($p)>0?$p:1;
+	public function index(){
 		
 		$Feedback = M('Feedback');
 		$pagesize = 20;#每页数量
-		$offset = $pagesize*($p-1);//计算记录偏移量
-		$prefix = C('DB_PREFIX');
-		if($sid){
-			$where = "{$prefix}Feedback.sid=$sid";
-		}else{
-			$where = '';
-		}
-		$count = $Feedback->where($where)->count();
-		$list  = $Feedback->field("{$prefix}Feedback.*,{$prefix}category.name")->where($where)->order("{$prefix}Feedback.aid desc")->join("{$prefix}category ON {$prefix}category.id = {$prefix}Feedback.sid")->limit($offset.','.$pagesize)->select();
-		
+		$count = $Feedback->count();
+		$list  = $Feedback->order("t desc")->select();
 		$page	=	new \Think\Page($count,$pagesize); 
 		$page = $page->show();
         $this->assign('list',$list);	
@@ -50,7 +39,6 @@ class FeedbackController extends ComController {
 	}
 	
 	public function del(){
-		
 		$aids = isset($_REQUEST['aids'])?$_REQUEST['aids']:false;
 		if($aids){
 			if(is_array($aids)){
@@ -76,13 +64,6 @@ class FeedbackController extends ComController {
 		$aid = intval($aid);
 		$Feedback = M('Feedback')->where('aid='.$aid)->find();
 		if($Feedback){
-			
-			$categoryFeedback = M('category')->field('id,pid,name')->order('o asc')->select();
-			$tree = new Tree($categoryFeedback);
-			$str = "<option value=\$id \$selected>\$spacer\$name</option>"; //生成的形式
-			$categoryFeedback = $tree->get_tree(0,$str,$Feedback['sid']);
-			$this->assign('category',$categoryFeedback);//导航
-			
 			$this->assign('Feedback',$Feedback);
 		}else{
 			$this->error('参数错误！');
@@ -117,5 +98,57 @@ class FeedbackController extends ComController {
 			}
 			
 		}
+	}
+	//发送邮件显示
+	public function sendEmail($aid){
+	    $aid = intval($aid);
+	    $Feedback = M('Feedback')->where('aid='.$aid)->find();
+	    if($Feedback){
+	        $this->assign('Feedback',$Feedback);
+	    }else{
+	        $this->error('参数错误！');
+	    }
+	    $this -> display();
+	}
+	//发送邮件
+	public  function email(){
+//$this->think_send_mail($result['member_id']);	    
+	    $aid = intval($aid);
+	    $data['feedbackId'] = isset($_POST['feedbackId'])?intval($_POST['feedbackId']):0;
+	    $data['title'] = isset($_POST['title'])?$_POST['title']:false;
+	    $data['recipientId'] = isset($_POST['recipientId'])?$_POST['recipientId']:false;
+	    $data['content'] = isset($_POST['content'])?$_POST['content']:false;
+	    $data['remark'] = isset($_POST['remark'])?$_POST['remark']:false;
+	    $data['create_time'] = time();
+	    //292334666@qq.com
+	    $config = C('THINK_EMAIL');
+	    vendor('phpmailer.class#phpmailer'); //从PHPMailer目录导class.phpmailer.php类文件
+	    $mail             = new PHPMailer(); //PHPMailer对象
+	    $mail->CharSet    = 'UTF-8'; //设定邮件编码，默认ISO-8859-1，如果发中文此项必须设置，否则乱码
+	    $mail->IsSMTP();  // 设定使用SMTP服务
+	    $mail->SMTPDebug  = 1;                     // 关闭SMTP调试功能
+	    $mail->SMTPAuth   = true;                  // 启用 SMTP 验证功能
+	    $mail->SMTPSecure = 'ssl';                 // 使用安全协议
+	    $mail->Host       = $config['SMTP_HOST'];  // SMTP 服务器
+	    $mail->Port       = $config['SMTP_PORT'];  // SMTP服务器的端口号
+	    $mail->Username   = $config['SMTP_USER'];  // SMTP服务器用户名
+	    $mail->Password   = $config['SMTP_PASS'];  // SMTP服务器密码
+	    $mail->SetFrom($config['FROM_EMAIL'], $config['FROM_NAME']);
+	    $replyEmail       = $config['REPLY_EMAIL']?$config['REPLY_EMAIL']:$config['FROM_EMAIL'];
+	    $replyName        = $config['REPLY_NAME']?$config['REPLY_NAME']:$config['FROM_NAME'];
+	    $mail->AddReplyTo($replyEmail, $replyName);
+	   
+	    $mail->Subject    = "宁夏亿次元科技";
+	    $mail->Body = $data['content'];//邮件内容
+	    //$mail->MsgHTML($body);
+	    $mail->AddAddress($data['recipientId']);
+	    if(!$mail->Send()) {
+	        //echo "发送失败: " . $mail->ErrorInfo;
+	        $this->error('发送失败，请重新操作！');
+	    } else {
+	        M('Email')->add($data);
+	        addlog('发送邮件，AID：'.$aid);
+	        $this->success('发送邮件成功！');
+	    }
 	}
 }

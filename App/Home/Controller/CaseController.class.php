@@ -60,4 +60,11 @@ class CaseController extends ComController {
 	        $this->assign("page", $showPage);
 	        $this->display();
 	}
+	//标签
+	public function tag(){
+	    $where['tagid']=$_GET['tagid'];
+	    $tagRe=M('Article')->where($where)->select();
+	    $this->assign('listArt',$tagRe);
+	    $this->display('Article/list');
+	}
 }

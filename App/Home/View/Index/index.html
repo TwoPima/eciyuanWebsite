@@ -2,39 +2,42 @@
 <html lang="zh-cn">
 <head>
 		<include file="Public:head" />
+		<style type="text/css">
+</style>
 </head>
 <body>
 	<div class="container-fluid">
 		<include file="Public:header"/>
 		<!--图片轮播 开始 -->
 		<div id="carousel-example-generic" class="carousel slide text-center" data-ride="carousel">
-			专注于品牌，专注于技术
 		  <ol class="carousel-indicators">
 		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
 		  </ol>
-		  专注于品牌，专注于技术
 		  <div class="carousel-inner" role="listbox">
 		    <div class="item active">
 		      <img  class="img-responsive " alt="Responsive image" src="__HOMEIMAGES__/lunbo1.png" alt="首页新闻图片">
 		      <div class="carousel-caption">
-		      </div>
-		    </div>
-		    <div class="item">
-		      <img class="img-responsive " alt="Responsive image" src="__HOMEIMAGES__/lunbo3.jpg" alt="第二站测试">
-		      <div class="carousel-caption">
-		      <h1>专注于品牌，专注于技术</h1>
+		      <h5>让您也拥有自己的网站</h5>
 		              <p></p>
-		              <p><a class="btn btn-lg btn-primary" href="#" role="button">详情了解</a></p>
+		              <p><a class="btn btn-lg btn-primary" href="https://shop151759785.taobao.com/"target="_blank" role="button">详情了解</a></p>
 		      </div>
 		    </div>
 		    <div class="item">
 		      <img class="img-responsive " alt="Responsive image" src="__HOMEIMAGES__/lunbo2.png" alt="第二站测试">
 		      <div class="carousel-caption">
-		      <h1>专注于品牌，专注于技术</h1>
+		      <h5>专注于品牌，专注于技术</h5>
 		              <p></p>
-		              <p><a class="btn btn-lg btn-primary" href="#" role="button">详情了解</a></p>
+		              <p><a class="btn btn-lg btn-primary" href="https://shop151759785.taobao.com/" target="_blank"role="button">详情了解</a></p>
+		      </div>
+		    </div>
+		       <div class="item">
+		      <img class="img-responsive " alt="Responsive image" src="__HOMEIMAGES__/lunbo3.jpg" alt="第二站测试">
+		      <div class="carousel-caption">
+		      <h5>微信公众号自媒体建设</h5>
+		              <p></p>
+		              <p><a class="btn btn-lg btn-primary" href="https://shop151759785.taobao.com/" target="_blank"role="button">详情了解</a></p>
 		      </div>
 		    </div>
 		  </div>
@@ -87,43 +90,59 @@
       </div><!-- /.row -->
           </div>
 			 <!-- 产品服务介绍结束 -->
-			 <!-- 图片展示开始 -->
-			 <div class="img-list-1 text-center">
-			 	<img class="img-responsive " alt="Responsive image" src="__HOMEIMAGES__/With-and-without-NativeBase-2.png">
-			 </div>
-			 <!-- 图片展示结束-->
+		 <!-- 图片1展示开始 -->
+		 <div class="img-list-1">
+			  <div class="container ">
+				<div class="row text-center">
+			        <div class="col-md-12" >
+		 			<img class="img-responsive " alt="Responsive image" src="__HOMEIMAGES__/With-and-without-NativeBase-2.png">
+		 			</div>
+		 		</div>
+		 	</div>
+		 </div>
+			 <!-- 图片1展示结束-->
 			<!--  资讯信息开始-->
 			<div class="news-list text-center">
 		  		<!-- Nav tabs -->
 			  	<div class="News-head text-center">
-				  <ul class="nav nav-tabs news-head-1 text-center" role="tablist">
-				    <li role="presentation" class="active">
-				    	<a href="#newsIndusty" aria-controls="newsIndustry" role="tab" data-toggle="tab">行业资讯</a>
-				    </li>
-				    <li role="presentation"><a href="#trends" aria-controls="trends" role="tab" data-toggle="tab">公司动态</a></li>
-				    <li role="presentation"><a href="#skill" aria-controls="skill" role="tab" data-toggle="tab">技术心得</a></li>
-				  </ul>
+			  	  <div class="container ">
+					<div class="row text-center">
+					 <div class="col-md-4" >
+					 </div>
+			       		 <div class="col-md-4" >
+							  <ul class="nav nav-tabs news-head-1 text-center" role="tablist">
+							    <li role="presentation" class="active" >
+							    	<a href="#newsIndusty" aria-controls="newsIndustry" role="tab" data-toggle="tab">行业资讯</a>
+							    </li>
+							    <li role="presentation"><a href="#trends" aria-controls="trends" role="tab" data-toggle="tab">公司动态</a></li>
+							    <li role="presentation"><a href="#skill" aria-controls="skill" role="tab" data-toggle="tab">技术心得</a></li>
+							  </ul>
+						  </div>
+						   <div class="col-md-4" >
+						 </div>
+					  </div>
+					  </div>
 				  </div>
 				  <!-- Tab panes -->
 				  <div class="tab-content text-center">
 				    <div role="tabpanel" class="tab-pane tab-pane-control active text-center " id="newsIndusty">
 				    	<ul class="list-unstyled text-center">
 				    	<volist name="newsIndustry" id="vo">
-				    		<li class="text-center"><a href="__APP__/Article?id={$vo.aid}" target="_blank">{$vo.title}</a></li>
+				    		<li class="text-center"><a href="__APP__/Home/Article/index?id={$vo.aid}&sid={$vo.sid}" target="_blank">{$vo.title}</a></li>
 				    	</volist>
 				    	</ul>
 				    </div>
 				    <div role="tabpanel" class="tab-pane tab-pane-control" id="trends">
 				  	<ul class="list-unstyled text-center">
 				    	<volist name="trends" id="vo">
-				    	<li><a href="__APP__/Article?id={$vo.aid}" target="_blank">{$vo.title}</a></li>
+				    	<li><a href="__APP__/Home/Article/index?id={$vo.aid}" target="_blank">{$vo.title}</a></li>
 				    	</volist>
 				    	</ul>
 				    </div>
 				    <div role="tabpanel " class="tab-pane tab-pane-control" id="skill">
 				    	<ul class="list-unstyled text-center">
 				    		<volist name="skill" id="vo">
-				    		<li><a href="__APP__/Article?id={$vo.aid}" target="_blank">{$vo.title}</a></li>
+				    		<li><a href="__APP__/Home/Article?id={$vo.aid}" target="_blank">{$vo.title}</a></li>
 				    	</volist>
 				    	</ul>
 				    </div>
@@ -137,18 +156,22 @@
 		            </div>
 		            <hr/>
 		            <div class="container-fluid">
-						  <div class="row case-row">
+						  <div class="row case-row text-center">
 							    <volist name="case" id="val">
-								   <div class="col-md-4" id="col-md-4-control">
-								      <div class="case-img">
-								      	<img  alt="Responsive image" class="img-responsive " alt="项目图片展示" src="__ROOT__/{$val.thumbnail}" style="display: block;">
-								      </div>
-								       <div class="case-details text-center">
-							           		<a href="__APP__/Home/Case/detail?sid={$val.sid}&aid={$val.aid}" target="_blank">
-							           			 <h3 class="case-name">{$val.title}</h3>
-							           			 <h4 class="case-type">{$val.type}</h4>
-							                    <p class="case-intro">{$val.description}</p>
-							                 </a>
+								   <div class="col-md-4 text-center">
+									 <div class="picBox text-center">
+										 <ul class="picL" id="picL" >
+										      <li>
+											      <img  alt="Responsive image" class="img-responsive img-polaroid" alt="项目图片展示" src="__ROOT__{$val.thumbnail}" style="display: block;">
+											       <div class="case-details text-center ">
+											       	<!-- 	 <b>{$val.type}</b> -->
+										           		<a href="__APP__/Home/Case/detail?sid={$val.sid}&aid={$val.aid}" target="_blank">
+										           			 <h3>{$val.title}</h3>
+										                    <p>{$val.description}</p>
+										                 </a>
+										           </div>
+									           </li>
+								           </ul>
 							           </div>
 								   </div>
 							   </volist>
@@ -160,8 +183,9 @@
 			</div>
 			 <!--案例结束  -->
 			 <!-- 图片展示2 -->
-			 <div class="img-list-2 text-center">
-					<div class="row ">
+			 <div class="img-list-2 ">
+				 <div class="container ">
+					<div class="row text-center">
 				        <div class="col-md-3 img-list-detail " >
 				          <img class="img-responsive" src="__HOMEIMAGES__/list-Icon.png" alt="" title="">
 				        </div>
@@ -175,38 +199,68 @@
 				          <img class="img-responsive" src="__HOMEIMAGES__/Header.png" alt="" >
 				        </div>
 				    </div>
+				    </div>
 				</div>
 			 <!-- 图片展示2 -->
 		<!--  合作伙伴开始-->
             <div class="text-center" id="friendLinkControl">
-			 	<div class="link-name text-center">
-	            <h2><i class="fa fa-link " aria-hidden="true"></i>&nbsp;&nbsp;合作伙伴</h2>
-	           </div>
-	            <div class="link-details text-center">
-		            <ul  class="list-unstyled text-center">
-			            <volist name="links" id="val">
-			          	  <li><a href="{$val.url}" target="_blank">{$val.title}</a></li>
-			            </volist>
-		            </ul>
-	            </div>
+           		  <div  class="container-fluid">
+	 			 	<div class="row">
+	 			 		<div class="col-md-12">
+						 	<div class="link-name text-center">
+				            <h2><i class="fa fa-link " aria-hidden="true"></i>&nbsp;&nbsp;合作伙伴</h2>
+				           </div>
+				             </div>
+		            </div>
+		            </div>
+	            <div  class="container-fluid">
+		 		<div class="row text-center">
+		 			<div class="col-md-12 text-center">
+		            <div class="link-details text-center">
+			            <ul  class="list-unstyled text-center">
+				            <volist name="links" id="val">
+				          	  <li><a href="{$val.url}" target="_blank">{$val.title}</a></li>
+				            </volist>
+			            </ul>
+		            </div>
+		            </div>
+		            </div>
+		            </div>
 			</div>
 			 	 <!--  合作伙伴结束-->
+	 		 <div class="img-list-3 text-center"><!-- 图片列表3 -->
+	 			 <div  class="container-fluid">
+	 			 	<div class="row">
+	 			 		<div class="col-md-12">
+							<img class="img-responsive " alt="Responsive image" src="__HOMEIMAGES__/img-list-3.jpg">
+	 			 		</div>
+	 			 	</div>
+	 			 </div>
+	 		 </div>
 		<!--  联系我们开始-->
             <div class="text-center" id="contact">
 			 	<div class="contact-name text-center">
 	            <h2><i class="fa fa-phone " aria-hidden="true"></i>&nbsp;&nbsp;联系我们</h2>
 	            <h4>全国统一服务热线：15248120395、15909581102</h4>
 	           </div>
-	            <div class="baiduMap text-center">
+	            <div class=" baiduMap text-center">
 		            <!-- Nav tabs -->
 			  	<div class="baiduMap-head text-center">
-				  <ul class="nav nav-tabs baiduMap-head-1 text-center" role="tablist">
-				    <li role="presentation" class="active">
-				    	<a href="#yinchuanMap" aria-controls="yinchuanMap" role="tab" data-toggle="tab">银川总公司</a>
-				    </li>
-				    <li role="presentation"><a href="#hushiMap" aria-controls="hushiMap" role="tab" data-toggle="tab">呼和浩特办事处</a></li>
-				    <li role="presentation"><a href="#chongqingMap" aria-controls="chongqingMap" role="tab" data-toggle="tab">重庆办事处</a></li>
-				  </ul>
+			  		  <div class="container">
+						  <div class="row">
+						     <div class="col-md-4"></div>
+								   <div class="col-md-4">
+									  <ul class="nav nav-tabs baiduMap-head-1 text-center" role="tablist">
+									    <li role="presentation" class="active">
+									    	<a href="#yinchuanMap" aria-controls="yinchuanMap" role="tab" data-toggle="tab">银川总公司</a>
+									    </li>
+									    <li role="presentation"><a href="#hushiMap" aria-controls="hushiMap" role="tab" data-toggle="tab">呼和浩特办事处</a></li>
+									    <li role="presentation"><a href="#chongqingMap" aria-controls="chongqingMap" role="tab" data-toggle="tab">重庆办事处</a></li>
+									  </ul>
+									  </div>
+									   <div class="col-md-4"></div>
+								  </div>
+							  </div>
 				  </div>
 				  <!-- Tab panes -->
 				  <div class="tab-content text-center">
@@ -244,21 +298,22 @@
                             <form name="sentMessage" id="feedback"  method="post" action="{:U('feedback')}">
                                 <div class="row">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="您的称呼" id="name" required="" data-validation-required-message="您的称呼也要输入" aria-invalid="false">
+                                        <input type="text" class="form-control" placeholder="您的称呼" name="name" id="name" required="" data-validation-required-message="您的称呼也要输入" aria-invalid="false">
                                         <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="form-group pull-right">
-                                        <input type="email" class="form-control" placeholder="Email" id="email" required="" data-validation-required-message="你的邮箱地址" aria-invalid="false">
+                                        <input type="email" class="form-control" placeholder="Email" name="email"id="email" required="" data-validation-required-message="你的邮箱地址" aria-invalid="false">
                                         <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="form-group form-textarea">
-                                        <textarea class="form-control" placeholder="填写您的需求" id="message" required="" data-validation-required-message="请输入内容"></textarea>
+                                        <textarea class="form-control" placeholder="填写您的需求" name="content" id="content" required="" data-validation-required-message="请输入内容"></textarea>
                                         <p class="help-block text-danger"></p>
                                     </div>
+                                <div id="result"></div>
+								<div id="list"></div>
                                     <div class="clearfix"></div>
                                     <div class="text-center">
-                                        <div id="success"></div>
-                                        <button type="submit" class="btn btn-xl submit">立即发送</button>
+                                        <button type="submit" id="feedbackSubmit" class="btn btn-xl submit">立即发送</button>
                                     </div>
                                 </div>
                             </form>
@@ -271,65 +326,20 @@
 			 	 <div class="height30px"></div>
 			 	 <!-- 底部开始 -->
 		<include file="Public:footer" />
+<script type="text/javascript" src="__HOMEJS__/jquery.easing.min.js"></script>
 <script type="text/javascript">
-	$("#col-md-4-control").hover(
-		  function () {
-		    $(".case-img").css("display","none");
-		  },
-		  function () {
-		    $(".case-details").removeClass("hover");
-		  }
-		);
-	  /*  图片切换 结束 */
-		$(function() {
-			$(".submit").click(function(){
-				var name = $("#name").val();
-				var email = $("#email").val();
-				var message = $("#message").val();
-				if(name==0){
-					bootbox.dialog({
-						title: '友情提示：',
-						message: "称呼也要填写！", 
-						buttons: {
-							"success" : {
-								"label" : "确定",
-								"className" : "btn-danger"
-							}
-						}
-					});
-					return;
-				}
-				if(email==''){
-					bootbox.dialog({
-						title: '友情提示：',
-						message: "联系方式填写！", 
-						buttons: {
-							"success" : {
-								"label" : "确定",
-								"className" : "btn-danger"
-							}
-						}
-					});
-					return;
-				}
-				if(message==''){
-					bootbox.dialog({
-						title: '友情提示：',
-						message: "需求内容也要填写！", 
-						buttons: {
-							"success" : {
-								"label" : "确定",
-								"className" : "btn-danger"
-							}
-						}
-					});
-					return;
-					return;
-				}
-				$("#feedback").submit();
-			});
-			
+	$(document).ready(function(){
+	<!-- top：蒙版的上边距控制； -->
+		$("#picL li").hover(function(){
+			$(this).find('.case-details:not(:animated)').animate(
+			{top:"0px"}, {easing:"easeInOutExpo"}, 50, function(){}
+			);
+		},function () {
+			$(this).find('.case-details').animate({top:"500px"}, {easing:"easeInOutExpo"}, 50, function(){});
 		});
+	
+	});
+	  /*  图片切换 结束 */
 		</script>
 	</div>
 </body>

@@ -12,7 +12,16 @@ namespace Home\Controller;
 use Think\Controller;
 use Vendor\Page;
 class ArticleController extends ComController {
+    //首页资讯详细
     public function index(){
+        //提取栏目内容
+        $where['id']=$_GET['sid'];
+        $result=M('Category')->where($where)->select();
+        $this->assign('CateName',$result);
+        
+		$aid = intval($_GET['id']);
+		$article = M('Article')->where('aid='.$aid)->select();
+		$this->assign('detail',$article);
 		$this -> display();
     }
 	
@@ -30,6 +39,12 @@ class ArticleController extends ComController {
 		$where['tag']=$_GET['word'];
 		$cate=M('Category')->where($where)->field("id")->find();
 		$article = M('Article')->where("sid='{$cate['id']}'")->find();
+		
+		//提取栏目内容
+		$whereCate['id']=$cate['id'];
+		$result=M('Category')->where($whereCate)->select();
+		$this->assign('CateName',$result);
+		
 		$this->assign('detail',$article);
 		$this -> display('index');
     }

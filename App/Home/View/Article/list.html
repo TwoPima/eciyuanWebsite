@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+ <html lang="zh-cn">
+ <head><include file="Public:head"/></head>
+ <body>
+ <div class="container-fluid">
+ 	<include file="Public:header"/>
+ 	<div class="blog">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+           	 <div class="blog-header text-center">
+		        <h3 class="blog-post-title">{$detail[0]['title']|msubstr=0,53,'utf-8',false}</h3>
+		     </div>
+           	<div class="blog-content">{$detail[0]['content']}</div>
+          </div>
+        <div class="col-sm-2 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>栏目介绍</h4>
+            <ol class="list-unstyled">
+            <volist name="CateName" id="val">
+              <li><i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="__APP__/Home/Category?id={$val.id}&pid={$val.pid}">{$val.name}</a></li>
+            </volist>
+            </ol>
+          </div>
+          <include file="Public:tag"/>
+      </div><!-- /.row -->
+      </div>
+ 	</div>
+ 	</div>
+ 		<include file="Public:footer" />
+ 	<script src='__HOMEJS__/tagCloud/tagscloud.js' language='javascript'></script>
+ </body>
+ </html>

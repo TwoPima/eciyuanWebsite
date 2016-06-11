@@ -19,11 +19,21 @@ float: right!important;
 .row {
     margin-right: 0;
     margin-left: 0;
+	padding:0;
 }
 .container{
 	width:100%;
 	margin:0;
 	padding:0;
+}
+.col-md-12,col-md-4,col-md-3,col-md-1,col-md-6{
+	padding:0;
+}
+p{
+		word-wrap:break-word;
+}
+.height30px{
+	height:30px;
 }
 /* 导航条开始 */
 .nav-body{
@@ -33,35 +43,76 @@ float: right!important;
 }
 .nav-body ul{
 	float:right;
-	/* background:#072F4A; */
 	background:#072F4A;
 }
+#home-sub-menu{font-size:0.75em!important;font-size:0.75em;}
 .navbar-nav li a{font-size:10px;color:white;font-weight:bold;}
 .navbar-nav li a:link {TEXT-DECORATION: none;background:none;}    /* 未访问的链接 */
 .navbar-nav  li a:visited {TEXT-DECORATION: none;background:none;}  /* 已访问的链接 */
 .navbar-nav li a:hover {COLOR: #F39B0E;background:none;text-decoration: underline;} /* 当有鼠标悬停在链接上 */
 .navbar-nav  li a:active {COLOR: #F39B0E; background:none; text-decoration: underline;}   /* 被选择的链接 */
+.navbar-brand img{
+	height:40px;
+	width:100px;
+	position:absolute; top:0; left:0; z-index:10; 
+}
+.logo_company_name{
+	margin-left:100px;
+	font-size:20px;
+}
+/*在这里写小屏幕设备的样式  */
+@media screen and (min-width: 320px) and (max-width: 480px){
+
+}
+
+
+/*这里写宽度大于321px小于1024px的样式(一般是平板电脑)  */
+@media only screen and (min-width: 321px) and (max-width: 1024px){
+
+}
+
+
+/*这里写pc客户端的样式  */
+@media only screen and (min-width: 1029px){
+
+}
 /* 导航条结束 */
 /* 图片展示1开始 */
 .img-list-1{
-	width:100%;
 	magin-bottom:0px;
-	padding-left:105px;
-	height:411px;
+	padding-left:10px;
 }
-/* Firefox */
-@-moz-document url-prefix()
-{
-	 .img-list-1{ 
-	padding-left:11.4%!important; 
-	}
+.img-list-1 .row{
+	height:100%;
 }
-
 .img-list-1 img{
-		margin-bottom:0px;
-		display:block;
+		display:block; margin:0 auto;/* 居中显示 */
 }
 /* 图片展示1结束 */
+/* 图片展示2 */
+.img-list-2 .row{
+	height:100%;
+}
+.img-list-2{
+	clear:both;
+}
+.img-list-detail img{
+	height:355px;
+	display:block; margin:0 auto;/* 居中显示 */
+}
+.img-list-detail{
+	height:355px;
+	margin-top:50px;
+}
+/* 图片展示2 */
+/* 图片展示3开始 */
+.img-list-3{
+	width:100%;
+}
+.img-list-3 img{
+	width:100%;
+}
+/* 图片展示3结束 */
 /* 产品服务开始 */
 .product{
 	width:100%;
@@ -69,7 +120,6 @@ float: right!important;
 /* 产品服务结束*/
 /* 案例开始 */
 .case-details-container{
-	height:1200px;
 }
 .case-details-container .container-fluid{
 		height:80%;
@@ -77,121 +127,145 @@ float: right!important;
 .case-details-name{
 	height:3%;
 }
-
-.case-img img{
-	display: block;
-	height:500px;
-	width:100%;
-}
-.case-details a{ 
-position: absolute;
-color: #000;
-left: 0px;
-top: 0px;
-width: 100%;
-height: 100%;
-}
-.case-row{
-		height:500px;
-}
 .case-row .col-md-4{
 		height:100%;
 		margin-bottom:20px;
 }
-
-.case-details{
-		text-decoration:none;
-		height:500px;
-		width:100%;
+.picL li img{
+	display: block;
+	width:100%;height:500px;
+	-webkit-backface-visibility: hidden;
+	-webkit-transition: opacity 0.3s ease-out;
+	-moz-transition: opacity 0.3s ease-out;
+	-o-transition: opacity 0.3s ease-out;
+	transition: opacity 0.3s ease-out;
 }
+.picBox{overflow:hidden;zoom:1; height:500px;}
+.picL{overflow:hidden;zoom:1;margin-left:-1px;}
+.picL li{
+	overflow:hidden;
+	position:relative;
+	float:left; 
+	display:inline; 
+	width:100%;height:500px;
+	margin:1px 0 0 1px; 
+	zoom:1  }
+.case-details{
+/* 	background:#0C4F7C; */
+	background:#072F4A;
+	position:absolute;
+	width:100%;
+	height:500px;
+	top:500px;
+	left:0;
+	font-family:'微软雅黑','黑体';
+}
+
 .case-details a{
 	position: absolute;
 	left: 0px;
 	top: 0px;
 	width: 100%;
 	height: 100%;
+	color: #fff;
+	display: block;
+	padding: 20px;
 }
 
 .case-details a p {
     padding: 10px 10px;
     text-align: center;
+	font-size:14px;
+	line-height:24px;
 }
-.case-details a h4 {
-    padding: 15% 10px 0px;
-    text-align: center;
-    font-size: 18px;
-    font-weight: bold;
+.case-details b{
+	background:#072F4A;
+	padding:15px 35px;
+	color:#fff;
+	font-size:14px;
+	display:inline-block;
+	*display:inline;
+	font-weight:100;
 }
-.case-details a h3 {
-    position: relative;
-    padding: 20px;
-    font-size: 14px;
-}
+
 .case-footer{
+	clear:both;
 	height:10%;
 }
 /* 案例结束 */
 /* 资讯信息开始 */
 .news-list{width:100%;height:210px;}
-.news-list a{	color:#777;}
+.news-list a{color:#777;}
 .News-head{height:20%;}
-.news-head-1{font-weight:bold;padding-left:40%;}
+.news-head-1{font-weight:bold;display:block;}
+.news-head-1 li{
+	 display: inline-block;
+    list-style: none;
+	width:33.2%;
+	background:#072F4A;
+}
+.news-head-1  li a:link {TEXT-DECORATION: none;COLOR: white;background:none;}    /* 未访问的链接 */
+.news-head-1  li a:visited {TEXT-DECORATION: none;background:#072F4A;}  /* 已访问的链接 */
+.news-head-1  li a:hover {COLOR: #F39B0E;background:none;TEXT-DECORATION: none;} /* 当有鼠标悬停在链接上 */
+.news-head-1  li a:active {
+	COLOR: #F39B0E; background:#072F4A;text-decoration: underline;}   /* 被选择的链接 */
+}
 .news-list .tab-content {background:#ECF0F1;height:80%;}
 /* 资讯信息结束 */
-/* 图片展示2 */
-.img-list-2 .row{
-	height:100%;
-	padding-left:50px;
-}
-.img-list-2{
-	position:relative;
-	clear:both;
-	height:400px;
-}
-.img-list-detail img{
-	height:355px;
-}
-.img-list-detail{
-	height:355px;
-	margin-top:50px;
-}
-/* 图片展示2 */
 /* 合作伙伴开始*/
 #friendLinkControl{
-	margin-top:0;
 	clear:both;
 	width:100%;
-	height:120px;
-	background-color:white;
-	border-top:1px solid white;
+}
+#friendLinkControl .row{
 }
 .link-name{
-	height:40%;
+	height:100%;
 }
 .link-details{
-	height:60%;
-	background-color:#072F4A;
+		background-color:#072F4A;
+	height:100%;
+		display:block; margin:0 auto;/* 居中显示 */
+
 }
 .link-details ul{
-	 display: inline-block;
+	overflow:hidden;
+	background-color:#072F4A;
+	display:block;
+	 margin:0 auto;/* 居中显示 */
 }
 .link-details li{
-	padding-top:15%;
-	float:right;
-	margin-left:10px;
-	color:#FFFFFF;
+	display:inline;
+	padding:0;
+	width:100%;
+	 margin:0 auto;/* 居中显示 */
+	float: left;
 }
 .link-details li a{
 	color:#FFFFFF;
 }
 /* 合作伙伴结束*/
 /* 联系我们开始 */
-#contact{margin-top:20px;height:620px;border:1px solid ;}
+#contact{margin-top:20px;height:620px;}
 .contact-name{height:80px;}
 .baiduMap{width:100%;height:540px;margin:0;padding:0;}
 .baiduMap a{color:#777;}
 .baiduMap-head{height:7%;margin:0;}
-.baiduMap-head-1{font-weight:bold;padding-left:40%;margin:0;}
+.baiduMap-head-1{font-weight:bold;margin:0;}
+.baiduMap-head-1 li{	
+	display: inline-block;
+    list-style: none;
+	width:33.2%;
+	font-size:12px;
+	background:#072F4A;
+	white-space:nowrap;
+}
+.baiduMap-head-1  li a:link {TEXT-DECORATION: none;COLOR: white;background:none;}    /* 未访问的链接 */
+.baiduMap-head-1  li a:visited {TEXT-DECORATION: none;background:#072F4A;}  /* 已访问的链接 */
+.baiduMap-head-1  li a:hover {COLOR: #F39B0E;background:none;TEXT-DECORATION: none;} /* 当有鼠标悬停在链接上 */
+.baiduMap-head-1  li a:active {
+	COLOR: #F39B0E; background:#072F4A;text-decoration: underline;}   /* 被选择的链接 */
+}
 .baiduMap .tab-content {background:#ECF0F1;height:90%;width:100%;padding:0;}
 .baiduMap .tab-content img{width:100%;height:500px;}
 /* 联系我们结束 */
@@ -289,53 +363,49 @@ border-radius: 4px;
 }
 /* 留言反馈结束 */
 /* page footer start */
-.height30px{
-	height:30px;
-}
 .bg-npm-navy-1{
-background-color: #072F4A !important;
+	background-color: #072F4A !important;
 }
 .pane>.container {
-padding-top: 60px;
-padding-bottom: 60px;
-}
-.col-md-offset-3 {
-margin-left: 15%;
-}
-.col-md-6 {
-width: 15%;
-}
-.col-md-offset-1 {
-margin-left: 4.16667%;
+	padding-top: 60px;
+	padding-bottom: 60px;
+	padding-left:30px;
+	padding-right:30px;
 }
 .type-npm-pastel-3 {
 color: #A4BBD7 !important;
 }
 .divider-1 {
-border: 1px solid rgba(255,255,255,0.1);
-border-width: 1px 0 0 0;
-	display: block;
--webkit-margin-before: 0.5em;
--webkit-margin-after: 0.5em;
--webkit-margin-start: auto;
--webkit-margin-end: auto;
+	border: 1px solid rgba(255,255,255,0.1);
+	border-width: 1px 0 0 0;
+		display: block;
+	-webkit-margin-before: 0.5em;
+	-webkit-margin-after: 0.5em;
+	-webkit-margin-start: auto;
+	-webkit-margin-end: auto;
 }
 .em-default {
-font-weight: 400 !important;
+	font-weight: 400 !important;
+	font-size:15px !important;
 }
 .pbl {
-padding-bottom: 10px !important;
+	padding-bottom: 10px !important;
+}
+.pbl img{
+	clear: both; 
+	display: block; 
+	margin:auto; 
 }
 .type-neutral-11 {
-color: #fff !important;
+	color: #fff !important;
 }
 .txt-c{
-text-align: center !important;
+	text-align: center !important;
 }
 .eciyuan-name {
-display: inline-block;
-text-decoration: none;
-position: relative;
+	display: inline-block;
+	text-decoration: none;
+	position: relative;
 }
 /* page footer end */
 
@@ -426,7 +496,6 @@ position: relative;
 /* 更多详细信息开始 */
 .blog-more .row{
 	padding-left:150px;
-	border:1px solid red;
 }
 .blog-more{
 	width:100%;

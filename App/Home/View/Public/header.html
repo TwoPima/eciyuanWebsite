@@ -8,7 +8,10 @@
 	        <span class="icon-bar"></span>
 	      </button>
 	       <!-- 导航条LOGO -->
-	      <a class="navbar-brand" href="__APP__"><img class="img-responsive " alt="Responsive image" src="__HOMEIMAGES__/logo.png"/></a>
+	      <a class="navbar-brand" href="__APP__">
+	      	<img class="img-responsive " alt="Responsive image" src="__HOMEIMAGES__/logo.png"/>
+	      	<span class="logo_company_name">亿次元科技</span>
+	      </a>
 	    </div>
 	<!--     导航菜单开始-->
 	    <div class="collapse navbar-collapse  " id="bs-example-navbar-collapse-1">
@@ -23,7 +26,7 @@
 	      		 		</a>
 						 <ul  class="dropdown-menu">
 							<volist name="article_cate_list['sub'][$val['id']]" id='sval'>
-							<li id=""><a  target="_self" href="__APP__/Home/Category?id={$sval.id}&pid={$val.id}">{$sval.name}</a></li>
+							<li><a  target="_self" href="__APP__/Home/Category?id={$sval.id}&pid={$val.id}" style="font-size:12px;">{$sval.name}</a></li>
 							</volist>
 						 </ul>
 					</li>

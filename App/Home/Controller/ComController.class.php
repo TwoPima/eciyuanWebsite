@@ -18,8 +18,7 @@ class ComController extends Controller {
 	    import("ORG.Util.Page"); //载入分页类
 		C(setting());
 	  		//导航数据组装
-		 $article_cate_mod = M('Category');
-		$result = $article_cate_mod->order('o ASC')->select();
+		$result = M('Category')->where('topsite=1')->order('o ASC')->select();
 		$article_cate_list = array();
 		foreach ($result as $val) {
 			if ($val['pid']==0) {

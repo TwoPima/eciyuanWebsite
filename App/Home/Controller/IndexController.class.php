@@ -31,76 +31,24 @@ class IndexController extends ComController {
         $this->assign('case',$case);
 		$this -> display();
     }
-	
-	//单页
-    public function single($aid){
-		
-		$aid = intval($aid);
-		$article = M('article')->where('aid='.$aid)->find();
-		$this->assign('article',$article);
-		$this->assign('nav',$aid);
-		$this -> display();
-    }
-	//文章
-    public function article($aid){
-		
-		$aid = intval($aid);
-		$article = M('article')->where('aid='.$aid)->find();
-		$sort = M('asort')->field('name,id')->where("id='{$article['sid']}'")->find();
-		$this->assign('article',$article);
-		$this->assign('sort',$sort);
-		$this -> display();
-    }
-	
-	//列表
-    public function articlelist($sid='',$p=1){
-		$sid = intval($sid);
-		$p = intval($p)>=1?$p:1;
-		$sort = M('asort')->field('name,id')->where("id='$sid'")->find();
-		if(!$sort) {
-			$this -> error('参数错误！');
-		}
-		$sorts = M('asort')->field('id')->where("id='$sid' or pid='$sid'")->select();
-		$sids = array();
-		foreach($sorts as $k=>$v){
-			$sids[] = $v['id'];
-		}
-		$sids = implode(',',$sids);
-
-		$m = M('article');
-		$pagesize = 2;#每页数量
-		$offset = $pagesize*($p-1);//计算记录偏移量
-		$count = $m->where("sid in($sids)")->count();
-		$list  = $m->field('aid,title,description,thumbnail,t')->where("sid in($sids)")->order("aid desc")->limit($offset.','.$pagesize)->select();
-		//echo $m->getlastsql();
-		$params = array(
-			'total_rows'=>$count, #(必须)
-			'method'    =>'html', #(必须)
-			'parameter' =>"/list-{$sid}-?.html",  #(必须)
-			'now_page'  =>$p,  #(必须)
-			'list_rows' =>$pagesize, #(可选) 默认为15
-		);
-		$page = new Page($params);
-		$this->assign('list',$list);	
-		$this->assign('page',$page->show(1));
-		$this->assign('sort',$sort);
-		$this->assign('p',$p);
-		$this->assign('n',$count);
-
-		$this -> display();
-    }
     /*  表单反馈*/
     public function feedback(){
-        $data['name'] = isset($_POST['name'])?$_POST['name']:false;
-        $data['email'] = isset($_POST['email'])?$_POST['email']:false;
-        $data['content'] = isset($_POST['content'])?$_POST['content']:false;
-        $data['create_time'] = time();
-        $aid = M('Feedback')->data($data)->add();
-        if($aid){
-            addlog('新增文章，AID：'.$aid);
-            $this->success('恭喜！文章新增成功！');
-        }else{
-            $this->error('抱歉，未知错误！');
+            $data['name'] = isset($_POST['name'])?$_POST['name']:false;
+            $data['email'] = isset($_POST['email'])?$_POST['email']:false;
+            $data['content'] = isset($_POST['content'])?$_POST['content']:false;
+            $data['t'] = time();
+            /* $data['ip'] = get_client_ip();
+             import('ORG.Net.IpLocation');// 导入IpLocation类
+             $Ip = new IpLocation('UTFWry.dat'); // 实例化类 参数表示IP地址库文件
+             $location  = $Ip->getlocation('203.34.5.66'); // 获取某个IP地址所在的位置
+             $info =  $location['country'].$location['area']; */
+            $aid = M('Feedback')->add($data);
+            if($aid){
+                //$this->ajaxReturn($_POST['name'],'发送成功',1);
+                $this->success("已经成功发送！请耐心等候");
+            }else{
+                $this->error("发送失败，请重新发送");
+            }
         }
-    }
+        
 }

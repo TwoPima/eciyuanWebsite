@@ -19,7 +19,7 @@ return array(
 	'DB_PORT'   => 3306, // 端口
 	'DB_PREFIX' => 'eci_', // 数据库表前缀
 	'DB_CHARSET'=>  'utf8',      // 数据库编码默认采用utf8
-    'SHOW_PAGE_TRACE' =>true, // 显示页面Trace信息
+    'SHOW_PAGE_TRACE' =>false, // 显示页面Trace信息
 	//备份配置
 	'DB_PATH_NAME'=> 'db',        //备份目录名称,主要是为了创建备份目录
 	'DB_PATH'     => './db/',     //数据库备份路径必须以 / 结尾；
@@ -32,6 +32,17 @@ return array(
 			'__HOMEJS__'=>__ROOT__.'/Public/Home/Js',
 			'__HOMEIMAGES__'=>__ROOT__.'/Public/Home/Images',
 	),
+	//phpmail邮件发送
+		'THINK_EMAIL' => array(
+				'SMTP_HOST'   => 'smtp.126.com', //SMTP服务器
+				'SMTP_PORT'   => '465', //SMTP服务器端口
+				'SMTP_USER'   => 'lianaiyao99@126.com', //SMTP服务器用户名
+				'SMTP_PASS'   => '85777126', //SMTP服务器密码
+				'FROM_EMAIL'  => 'lianaiyao99@126.com', //发件人EMAIL
+				'FROM_NAME'   => '宁夏亿次元科技有限公司', //发件人名称
+				'REPLY_EMAIL' => '857773627@qq.com', //回复EMAIL（留空则为发件人EMAIL）
+				'REPLY_NAME'  => '宁夏亿次元科技有限公司', //回复名称（留空则为发件人名称）
+		),
     // 设置禁止访问的模块列表
     'MODULE_DENY_LIST'      =>  array('Common','Runtime','Public'),
 );

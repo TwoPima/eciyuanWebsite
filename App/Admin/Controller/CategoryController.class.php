@@ -89,6 +89,11 @@ class CategoryController extends ComController {
 		$data['link'] = isset($_POST['link'])?trim($_POST['link']):'';
 		$data['tag'] = isset($_POST['tag'])?trim($_POST['tag']):'';
 		$data['o'] = isset($_POST['o'])?intval($_POST['o']):0;
+		$data['type_case'] = isset($_POST['type_case'])?intval($_POST['type_case']):0;
+		$data['type_news'] = isset($_POST['type_news'])?intval($_POST['type_news']):0;
+		$data['type_product'] = isset($_POST['type_product'])?intval($_POST['type_product']):0;
+		$data['topsite'] = isset($_POST['topsite'])?intval($_POST['topsite']):0;
+		$data['footsite'] = isset($_POST['footsite'])?intval($_POST['footsite']):0;
 		if(!$data['name']){
 			die('0');
 		}

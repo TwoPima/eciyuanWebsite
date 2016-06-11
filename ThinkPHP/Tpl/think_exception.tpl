@@ -6,11 +6,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>系统发生错误</title>
+<title>亿次元科技</title>
 <style type="text/css">
 *{ padding: 0; margin: 0; }
 html{ overflow-y: scroll; }
-body{ background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16px; }
+body{ background: #fff; font-family: ''; color: #333; font-size: 16px; }
 img{ border: 0; }
 .error{ padding: 24px 48px; }
 .face{ font-size: 100px; font-weight: normal; line-height: 120px; margin-bottom: 12px; }
@@ -52,7 +52,7 @@ h1{ font-size: 32px; line-height: 48px; }
 </div>
 </div>
 <div class="copyright">
-<p><a title="恰维网络" href="http://www.qiawei.com" target="_blank">恰维网络</a><sup><?php echo THINK_VERSION ?></sup></p>
+<p><a title="亿次元科技" href="http://www.eciyuan.net" target="_blank">亿次元科技</a><sup><?php echo THINK_VERSION ?></sup></p>
 </div>
 </body>
 </html>
