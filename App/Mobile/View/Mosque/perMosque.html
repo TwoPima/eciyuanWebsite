@@ -1,0 +1,227 @@
+<include file="Public:headjs"/>
+<body id="page-top">
+<nav class="m-top-title-nav">
+	<div class="top-nav-left ">
+		<a href="__APP__/Mobile/index" class="button-returnList"><span class="glyphicon glyphicon-backward"></span>返回</a>
+	</div>
+	<div class="top-title  text-center"><h4><span class="glyphicon glyphicon-user"></span>{$Think.cookie.mosqueName}我的主页</h4></div>
+</nav>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#basicInfo" aria-expanded="false" aria-controls="collapseThree">
+		        <i class="glyphicon glyphicon-th-list"></i>
+				<span class="card-title">基本信息</span>
+        </a>
+      </h4>
+    </div>
+    <div id="basicInfo" class="panel-collapse collapse  in" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+    	  <div class="info-item">
+			<div class="name"><span class="key">名称</span><span class="val">{$detail.name}</span></div>
+			<div class="linkman"><span class="key">主持</span><span class="val">{$detail.linkname}</span></div>
+			<div class="address"><span class="key">地址</span><span class="val">{$detail.s_province}{$detail.s_county}{$detail.s_city}{$detail.address}</span></div>
+			<div class="intro"><span class="key">基本介绍</span><span class="val">{$detail.intro}</span></div>
+			</div>
+		 </div>
+    </div>
+  </div>
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingOne">
+			      <h4 class="panel-title">
+			        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#qrcode" aria-expanded="true" aria-controls="collapseOne">
+			       		 <i class="glyphicon glyphicon-qrcode"></i>
+						<span class="card-title">主页二维码</span>
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="qrcode" class="panel-collapse collapse in " role="tabpanel" aria-labelledby="headingOne">
+			      <div class="panel-body">
+			      		<ul class="list-group">
+							 	<li class="list-group-item qrcode">
+							 		<img alt="" id=qrcode_img  src="__ROOT__/{$detail.qrcode}">	
+							 	</li>
+							 	<li class="list-group-item list-group-item-warning center-block">
+							 			<p class="text-info btn-center">通过该二维码关注该清真寺，以后相关的资讯和通知通过该平台发布</p>
+							 			<a href="__URL__/notice" class="btn btn-primary  btn-block btn-center">保存二维码并在微信扫描</a>
+							 			<p class="text-muted btn-center">扫一扫界面->点相册->选择二维码图片</p>
+							 	</li>
+						</ul>
+			      </div>
+			    </div>
+			  </div>
+  <!--本人登陆状态  -->
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingOne">
+			      <h4 class="panel-title">
+			        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#notice" aria-expanded="true" aria-controls="collapseOne">
+			       		 <i class="glyphicon glyphicon-envelope"></i>
+						<span class="card-title">我的通知</span>
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="notice" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+			      <div class="panel-body">
+			      		<ul class="list-group">
+			      		<volist name="notice" id="vo">
+							   <a href="{:U('Mosque/noticeDetail',array('id'=>$vo['id'],'type'=>1))}">
+							 	<eq name="mod" value="1">
+							 		<li class="list-group-item list-group-item-info">
+							 		<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__MOBILE__/Img/textLife.jpg"/>
+							 			<span>{$vo.title}</span></li>
+							 	</eq>
+							 	<li class="list-group-item list-group-item-warning">
+							 	<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__MOBILE__/Img/textLife.jpg"/>
+							 		<span>{$vo.title}</span></li>
+							   </a>
+						  </volist>
+						</ul>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingOne">
+			      <h4 class="panel-title">
+			        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#addNotice" aria-expanded="true" aria-controls="collapseOne">
+			       		 <i class="glyphicon glyphicon-plus"></i>
+						<span class="card-title">我要通知</span>
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="addNotice" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingOne">
+			      <div class="panel-body">
+							 	<div class="container">
+							 	<div class="row "data-animated="0">
+				   <form class="form-horizontal" id="notice" action="__URL__/notice" method="post">
+				       <div  class="col-md-12 text-center"><label  class="control-label ">我要发布信息</label></div>
+				     	  <div class="text-center">
+							    <label for="" class="col-md-2 control-label"></label>
+							    <div class="col-md-10">
+							    <div class="input-group">
+							      <span class="input-group-addon">
+	                                        <i class="glyphicon glyphicon-user"></i>
+	                                   </span>
+							      <input type="text" name="title"class="form-control" id="" placeholder="请输入名称">
+							    </div>
+							    </div>
+						  </div>
+					<div class="intro-textarea text-center">
+					 <label for="" class="col-md-2 control-label"></label>
+                            <div class="col-md-10"> 
+                              <div   class="input-group">
+                              	<span class="input-group-addon"  >
+                                        <i class="glyphicon glyphicon-globe"></i>
+                                  </span>
+                                <textarea   name="content" class="form-control validate[required,maxSize[50]]" rows="3" placeholder="填写您让我们大家知道的消息" name="content"></textarea>
+                           		 </div>
+                            </div>
+                        </div>
+				     <input type="hidden" name="mosqueId" id="mosqueId" value="{$id}" />
+		             <input type="hidden" name="submit"  value="1" />
+				  <div class="text-center ">
+				    <div class="col-md-offset-2 col-md-10">
+				      <button type="submit" class="btn  btn-success btn-sm"><i class="glyphicon glyphicon-registration-mark"></i>提交</button>
+				    </div>
+				  </div>
+				</form>
+			          </div> 	
+				<div class="row" data-animated="0">
+					<div class="col-md-12 text-center">
+					<a href="" class="btn btn-info btn-sm call_button"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>拨打15909581102</a>
+				    </div>
+				  </div>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingTwo">
+			      <h4 class="panel-title">
+			        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#mynews" aria-expanded="false" aria-controls="collapseTwo">
+			         <i class="glyphicon glyphicon-list-alt"></i>
+					<span class="card-title" >我的资讯</span>
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="mynews" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+			      <div class="panel-body">
+			       <ul class="list-group">
+			      		<volist name="article" id="vo">
+			      		<empty name="$val.url">
+							   <a href="$val.url" target="_blank">
+							   <eq name="mod" value="1">
+							 				<li class="list-group-item list-group-item-info">
+							 				<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
+							 				<span>{$vo.title|msubstr=0,12,'utf-8',true}</span></li>
+							 	</eq>
+							 	  <li class="list-group-item">
+							 	  <img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
+							 	  <span>{$vo.title|msubstr=0,12,'utf-8',true}</span>
+							 	  </li>
+							   </a>
+							   	<else /> 
+									   	  <a href="{:U('Mosque/detail',array('id'=>$vo['id'],'type'=>1))}">
+									   <eq name="mod" value="1">
+									 				<li class="list-group-item list-group-item-info">
+									 				<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
+									 				<span>{$vo.title|msubstr=0,12,'utf-8',true}</span></li>
+									 	</eq>
+									 	  <li class="list-group-item">
+									 	  <img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
+									 	  <span>{$vo.title|msubstr=0,12,'utf-8',true}</span>
+									 	  </li>
+									   </a>
+							   </empty>
+						  </volist>
+						</ul>
+						</div>
+			    </div>
+			  </div>
+			<!-- 游客登陆：相关的报道资讯列出来 -->
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingTwo">
+			      <h4 class="panel-title">
+			        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#aboutnews" aria-expanded="false" aria-controls="collapseTwo">
+			         <i class="glyphicon glyphicon-list-alt"></i>
+					<span class="card-title" >相关资讯</span>
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="aboutnews" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+			      <div class="panel-body">
+			       <ul class="list-group">
+			      		<volist name="article" id="vo">
+			      			<empty name="$val.url">
+							   <a href="$val.url" target="_blank">
+							   <eq name="mod" value="1">
+							 				<li class="list-group-item list-group-item-info">
+							 				<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
+							 				<span>{$vo.title|msubstr=0,12,'utf-8',true}</span></li>
+							 	</eq>
+							 	  <li class="list-group-item">
+							 	  <img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
+							 	  <span>{$vo.title|msubstr=0,12,'utf-8',true}</span>
+							 	  </li>
+							   </a>
+							   	<else /> 
+									   <a href="{:U('Mosque/detail',array('id'=>$vo['id'],'type'=>1))}">
+									   <eq name="mod" value="1">
+									 			<li class="list-group-item list-group-item-info">
+									 				<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
+									 			 <span>{$vo.title|msubstr=0,12,'utf-8',true}</span>
+									 			</li>
+									 	</eq>
+									 	  <li class="list-group-item">
+									 	  	<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
+									 	  <span>{$vo.title|msubstr=0,12,'utf-8',true}</span>
+									 	  </li>
+									   </a>
+								</empty>
+						  </volist>
+						</ul>
+						</div>
+			    </div>
+			  </div>
+	</div>
+	<include file="Public:footer"/>
+</body>

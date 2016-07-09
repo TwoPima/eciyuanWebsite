@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+    <title><if condition="$seotitle">{$seotitle}<else />{$title}</if> <if condition="$p gt '1'">第{$p}页</if>--{$webname}</title> 
+    <meta name="Keywords" content="{$key}" /> 
+    <meta name="Description" content="{$desc} <if condition="$p gt '1'">第{$p}页</if>" />  
+	<meta name="author" content="pcwap.cn">
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="__PUBLIC__/pcwap001/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/pcwap001/css/owl.carousel.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/owl.theme.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/owl.transitions.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/easy-responsive-tabs.css" rel="stylesheet"/>
+    <link href="__PUBLIC__/pcwap001/css/flexslider.css" rel="stylesheet" />
+    <link href="__PUBLIC__/pcwap001/css/prettyphoto.css" rel="stylesheet" />
+    <link href="__PUBLIC__/pcwap001/css/style.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/style-responsive.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+      	<script src="__PUBLIC__/pcwap001/js/html5shiv.js"></script>
+	      <script src="__PUBLIC__/pcwap001/js/respond.js"></script>
+	<![endif]-->
+
+</head>
+
+<body id="page-top">
+<include file=":header" />
+		
+		<!-- Right Main Content -->
+		<div class="col-md-9 m-right">
+		
+			<!-- Intro Slider -->
+		<!-- Page Header -->
+			<div class="row">
+				<div class="col-md-12">
+					<div id="page-header" data-animated="0">
+						<h3><span>{$title}</span></h3>
+					
+						<ul class="bread_crumbs">
+							<li><a href="{$domain}">网站首页</a></li>
+							<li>{$daohan}</li>
+								<volist name="catesub" id="vo">
+							<li><a href="{$vo.url}">{$vo.catename}</a></li>
+								</volist>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Portfolio -->
+			<div class="row">
+				<div class="col-md-12">
+					<div id="m-portfolio" data-animated="0">
+					
+					
+						<div class="row">
+							<volist name="list" id="vo">
+							<div class="col-md-4" data-animated="0">
+								<div class="mp-thumb">
+									<img src="{$vo['pic']}" class="img-responsive" alt="{$vo['name']}"/>
+									<div class="overlay1">
+										<h4>{$vo['name']|msubstr=###,0,10}</h4>
+									</div>
+									<div class="overlay1-hr">
+										<a href="{$vo['url']}" class="link"><i class="fa fa-file-text-o"></i></a>
+										<a href="{$vo['pic']}" class="prettyPhoto zoom"><i class="fa fa-search"></i></a>
+									</div>
+								</div>
+							</div>
+							</volist>							
+						</div>
+				
+								<ul class="pagination">
+									{$page}
+								</ul>						
+				</div>
+					</div>
+					
+			</div>
+		
+		
+			
+			
+			<include file=":footer" />
+		</div>
+		<!-- Right Main Content - END -->
+	</div>
+</div>
+<!-- Outer-wrap - END -->
+
+<!-- jQuery -->
+
+	
+</body>
+</html>

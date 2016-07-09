@@ -42,7 +42,7 @@ class LoginController extends BaseController {
 				cookie('user',$user);
 			}
 			if($user){
-				addlog('登录成功。');				$url=U('index/index');
+				addlog('登录成功。',$_POST['user']);				$url=U('index/index');
 				header("Location: $url");
 				exit(0);
 			}

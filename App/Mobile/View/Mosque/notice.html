@@ -1,0 +1,95 @@
+<include file="Public:headjs"/>
+<body id="page-top">
+	<include file="Public:header" />
+		<div class="container">
+				<div class="row "data-animated="0">
+				   <form class="form-horizontal" id="notice" action="__URL__/notice" method="post">
+				       <div  class="col-md-12 text-center"><label  class="control-label ">我要发布信息</label></div>
+				     	  <div class="text-center">
+							    <label for="" class="col-md-2 control-label"></label>
+							    <div class="col-md-10">
+							    <div class="input-group">
+							      <span class="input-group-addon">
+	                                        <i class="glyphicon glyphicon-user"></i>
+	                                   </span>
+							      <input type="text" name="title"class="form-control" id="" placeholder="请输入名称">
+							    </div>
+							    </div>
+						  </div>
+					<div class="intro-textarea text-center">
+					 <label for="" class="col-md-2 control-label"></label>
+                            <div class="col-md-10"> 
+                              <div   class="input-group">
+                              	<span class="input-group-addon"  >
+                                        <i class="glyphicon glyphicon-globe"></i>
+                                  </span>
+                                <textarea   name="content" class="form-control validate[required,maxSize[50]]" rows="3" placeholder="填写您让我们大家知道的消息" name="content"></textarea>
+                           		 </div>
+                            </div>
+                        </div>
+				     <input type="hidden" name="mosqueId" id="mosqueId" value="{$id}" />
+		             <input type="hidden" name="submit"  value="1" />
+				  <div class="text-center ">
+				    <div class="col-md-offset-2 col-md-10">
+				      <button type="submit" class="btn  btn-success btn-sm"><i class="glyphicon glyphicon-registration-mark"></i>提交</button>
+				    </div>
+				  </div>
+				</form>
+			          </div> 	
+				<div class="row" data-animated="0">
+					<div class="col-md-12 text-center">
+					<a href="" class="btn btn-info btn-sm call_button"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>拨打15909581102</a>
+				    </div>
+				  </div>
+		</div>
+  <include file="Public:footer"/>
+  <script type="text/javascript">
+  var PlaceHolder = {
+		    _support: (function() {
+		        return 'placeholder' in document.createElement('input');
+		    })(),
+
+		    //提示文字的样式，需要在页面中其他位置定义
+		    className: 'abc',
+
+		    init: function() {
+		        if (!PlaceHolder._support) {
+		            //未对textarea处理，需要的自己加上
+		            var inputs = document.getElementsByTagName('input');
+		            PlaceHolder.create(inputs);
+		        }
+		    },
+
+		    create: function(inputs) {
+		        var input;
+		        if (!inputs.length) {
+		            inputs = [inputs];
+		        }
+		        for (var i = 0, length = inputs.length; i <length; i++) {
+		            input = inputs[i];
+		            if (!PlaceHolder._support && input.attributes && input.attributes.placeholder) {
+		                PlaceHolder._setValue(input);
+		                input.addEventListener('focus', function(e) {
+		                    if (this.value === this.attributes.placeholder.nodeValue) {
+		                        this.value = '';
+		                        this.className = '';
+		                    }
+		                }, false);
+		                input.addEventListener('blur', function(e) {
+		                    if (this.value === '') {
+		                        PlaceHolder._setValue(this);
+		                    }
+		                }, false);
+		            }
+		        }
+		    },
+
+		    _setValue: function(input) {
+		        input.value = input.attributes.placeholder.nodeValue;
+		        input.className = PlaceHolder.className;
+		    }
+		};
+
+		//页面初始化时对所有input做初始化
+		PlaceHolder.init();
+  </script>

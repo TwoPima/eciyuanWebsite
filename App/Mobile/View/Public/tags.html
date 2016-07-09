@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+    <title><if condition="$seotitle">{$seotitle}<else />{$title}</if> --{$webname}</title> 
+
+	<meta name="author" content="pcwap.cn">
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="__PUBLIC__/pcwap001/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/pcwap001/css/owl.carousel.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/owl.theme.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/owl.transitions.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/easy-responsive-tabs.css" rel="stylesheet"/>
+    <link href="__PUBLIC__/pcwap001/css/flexslider.css" rel="stylesheet" />
+    <link href="__PUBLIC__/pcwap001/css/prettyphoto.css" rel="stylesheet" />
+    <link href="__PUBLIC__/pcwap001/css/style.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/style-responsive.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+      	<script src="__PUBLIC__/pcwap001/js/html5shiv.js"></script>
+	      <script src="__PUBLIC__/pcwap001/js/respond.js"></script>
+	<![endif]-->
+
+</head>
+
+<body id="page-top">
+<include file=":header" />
+		
+		<!-- Right Main Content -->
+		<div class="col-md-9 m-right">
+		
+			<!-- Intro Slider -->
+		<!-- Page Header -->
+			<div class="row">
+				<div class="col-md-12">
+					<div id="page-header" data-animated="0">
+						<h3><span>{$title}</span></h3>
+					
+						<ul class="bread_crumbs">
+							<li><a href="{$domain}">网站首页</a></li>
+							<li>{$title}</li>
+								
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Portfolio -->
+			<div class="row">
+				<div class="col-md-12">
+					<div id="m-portfolio" data-animated="0">
+					
+					
+					<div class="row">
+				<div class="col-md-12">
+					<div class="col-md-12" id="timeline-wrap" data-animated="0">					
+						<ol id="timeline">
+							<volist name="list" id="vo">
+							<li <if condition="is_int($i/2)">class="t-right"<else />class="t-left"</if> data-animated="0">
+								<div class="t-time"><a href="{$vo.url}">{$vo.name|msubstr=###,0,15}</a><span>{$vo.time|msubstr=###,5,5}</span></div>
+								<p>{$vo.desc}</p>
+							</li>
+							</volist>
+							
+						</ol>
+					</div>
+				</div>
+			</div>
+			
+								<ul class="pagination">
+									{$page}
+								</ul>						
+				</div>
+				<aside>				
+										<!-- Tags -->
+										<div class="side-widget m-tags">
+											<h5>更多Tags</h5>
+											<ul>
+												<taglist num="15" paixu="rand()">
+													<li><a href="{$taglist['url']}">{$taglist['tag']}</a></li>
+												</taglist>
+											</ul>
+										</div>						
+									</aside>
+					</div>
+					
+					
+			</div>
+		
+		
+			
+			
+			<include file=":footer" />
+		</div>
+		<!-- Right Main Content - END -->
+	</div>
+</div>
+<!-- Outer-wrap - END -->
+
+<!-- jQuery -->
+
+	
+</body>
+</html>

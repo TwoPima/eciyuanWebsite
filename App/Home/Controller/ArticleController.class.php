@@ -1,11 +1,11 @@
 <?php
 /**
 *
-* 版权所有：e次元科技<qwadmin.qiawei.com>
+* 版权所有：亿次元科技<www.eciyuan.net>
 * 作    者：马晓成<857773627@qq.com>
 * 日    期：2016-04-21
 * 版    本：1.0.0
-* 功能说明：前台控制器_产品展示。
+* 功能说明：前台文章控制器。
 *
 **/
 namespace Home\Controller;

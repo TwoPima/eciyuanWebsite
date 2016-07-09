@@ -1,9 +1,9 @@
 <?php
 /**
 *
-* 版权所有：恰维网络<qwadmin.qiawei.com>
-* 作    者：寒川<hanchuan@qiawei.com>
-* 日    期：2016-09-20
+* 版权所有：亿次元科技(www.eciyuan.net)
+* 作    者：马晓成(ma.running@foxmail.com)
+* 日    期：2016-06-20
 * 版    本：1.0.0
 * 功能说明：文章控制器。
 *
@@ -95,6 +95,7 @@ class ArticleController extends ComController {
 		$aid = intval($aid);
 		$data['sid'] = isset($_POST['sid'])?intval($_POST['sid']):0;
 		$data['title'] = isset($_POST['title'])?$_POST['title']:false;
+		$data['url'] = isset($_POST['url'])?$_POST['url']:false;
 		$data['keywords'] = I('post.keywords','','strip_tags');
 		$data['description'] = I('post.description','','strip_tags');
 		$data['content'] = isset($_POST['content'])?$_POST['content']:false;

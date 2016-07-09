@@ -1,0 +1,24 @@
+<include file="Public:headjs" />
+<include file="Public:header" />
+<body id="page-top">
+		<div class="container">
+					<div class="row">
+							<div id="blog" >
+									<div class="blog-header text-center">
+							        <h3 class="blog-post-title">{$artDetail['title']}</h3>
+							    	 </div>
+					           		<div class="blog-content">{$artDetail['content']}</div>
+						           	<ul class="blog_next_prev">
+						               <li class="prev_blog">
+						                	<span><i class="glyphicon glyphicon-triangle-top"></i>上一篇:</span>
+						                	<a href="{:U('Mosque/detail',array('id'=>$front['id'],'type'=>clothes))}" >{$front['title']|msubstr=0,30,'utf-8',true}</a></li>
+						                <li class="next_blog">
+						                	<span><i class="glyphicon glyphicon-triangle-bottom"></i>下一篇:</span>
+						                		<a href="{:U('Mosque/detail',array('id'=>$after['id'],'type'=>clothes))}">{$after['title']|msubstr=0,30,'utf-8',true}</a></li>
+								    </ul>
+							</div>
+					</div>
+					</div>
+			<include file="Public:footer" />
+</body>
+</html>

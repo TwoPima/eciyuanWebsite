@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+    <title><if condition="$seotitle">{$seotitle}<else />{$title}</if>--{$webname}</title> 
+    <meta name="Keywords" content="{$key}" /> 
+    <meta name="Description" content="{$desc}" />  
+	<meta name="author" content="pcwap.cn">
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="__PUBLIC__/pcwap001/css/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="__PUBLIC__/pcwap001/css/owl.carousel.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/owl.theme.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/owl.transitions.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/easy-responsive-tabs.css" rel="stylesheet"/>
+    <link href="__PUBLIC__/pcwap001/css/flexslider.css" rel="stylesheet" />
+    <link href="__PUBLIC__/pcwap001/css/prettyphoto.css" rel="stylesheet" />
+    <link href="__PUBLIC__/pcwap001/css/style.css" rel="stylesheet">
+    <link href="__PUBLIC__/pcwap001/css/style-responsive.css" rel="stylesheet">
+
+	<!--[if lt IE 9]>
+      	<script src="__PUBLIC__/pcwap001/js/html5shiv.js"></script>
+	      <script src="__PUBLIC__/pcwap001/js/respond.js"></script>
+	<![endif]-->
+
+</head>
+
+<body id="page-top">
+<include file=":header" />
+		
+		<!-- Right Main Content -->
+		<div class="col-md-9 m-right">
+		
+			<!-- Intro Slider -->
+		<!-- Page Header -->
+			<div class="row">
+				<div class="col-md-12">
+					<div id="page-header" data-animated="0">
+						<h3><span>{$catename}</span></h3>
+					
+						<ul class="bread_crumbs">
+							<li><a href="{$domain}">网站首页</a></li>
+							<li>{$daohan}</li>								
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Blog Post Content -->
+			<div class="row" data-animated="0">
+				<div class="col-md-12">
+					<div id="m-blog-content">
+						<div class="row">
+							<div class="col-md-12">
+								<article class="item">
+									
+									<h4>{$title}</h4>
+									<div class="blog-meta">
+										<span><i class="fa fa-comments"></i> {$revs} 评论</span>
+										<span><i class="fa fa-user"></i> {$author}</span>
+									</div>
+									
+					
+										
+										<div class="col-md-12" style="margin:20px 0">
+											{$content}
+											
+										</div>
+										<aside>				
+										<!-- Tags -->
+										<div class="side-widget m-tags">
+											<h5>Tags</h5>
+											<ul>
+												{$tag}
+											</ul>
+										</div>						
+									</aside>
+										<ul class="pager">
+										  <li class="previous"><a href="{$prev.url}">&larr; 上一篇</a></li>
+										  <li class="next"><a href="{$next.url}">下一篇 &rarr;</a></li>
+										</ul>
+									<!-- Comments -->
+									<div class="comments-wrap" data-animated="0">
+										<h5>{$revs} 条评论</h5>
+										<ul>
+										<volist name="book" id="vo">
+											<li>
+												<img src="__PUBLIC__/pcwap001/img/icons/2.jpg" alt=""/>
+												<div class="comments-inner">
+													<div class="comment-author">{$vo.name} <span>{:date('Y-m-d',$vo['time'])}</span></div>
+													<p>{$vo.content}</p>
+												</div>
+											</li>
+											<if condition="$vo['reply']">
+											<li class="sub-comment1">
+												<img src="__PUBLIC__/pcwap001/img/icons/2.jpg" alt=""/>
+												<div class="comments-inner">
+													<div class="comment-author">官方回复 <span></span></div>
+													<p>{$vo.reply}</p>
+												</div>
+											</li>
+											</if>
+											</volist>
+											
+										</ul>
+									</div>
+									
+									<div class="article-comment-form" data-animated="0">
+										<h5>发表评论</h5>
+										<form>
+											<div class="row">
+												<div class="col-md-6">
+													<span><i class="fa fa-user"></i></span>
+													<input type="text" name="name" placeholder="称呼">
+													<span><i class="fa fa-envelope-o"></i></span>
+													<input type="email" name="email" placeholder="e-mail">
+													<span><i class="fa fa-link"></i></span>
+													<input type="tel" name="tel" placeholder="电话">
+													<input type="hidden" name="infoid" value="{$infoid}">
+												</div>
+												<div class="col-md-6">
+													<textarea placeholder="Message" id="con" name="content"></textarea>
+													<button type="button" id="postrev">发送</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Blog Post Content -->
+		
+			
+			
+			<include file=":footer" />
+			
+		</div>
+		<!-- Right Main Content - END -->
+	</div>
+</div>
+<!-- Outer-wrap - END -->
+
+<!-- jQuery -->
+
+	
+</body>
+</html>

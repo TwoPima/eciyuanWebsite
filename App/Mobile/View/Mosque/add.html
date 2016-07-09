@@ -1,0 +1,208 @@
+<include file="Public:headjs"/>
+<body id="page-top">
+	<include file="Public:header" />
+		<div class="container">
+				<div class="row "data-animated="0">
+				   <form class="form-horizontal" id="contact-us" action="__URL__/add" method="post">
+				      <div  class="col-md-12 text-center">
+				      	<label  class="control-label ">我要入驻</label>
+		               <i class="fa fa-user"></i>
+				      </div> 
+						  <div class="text-center">
+							    <label for="" class="col-md-2 control-label"></label>
+							    <div class="col-md-10">
+							    <div class="input-group">
+							      <span class="input-group-addon">
+	                                        <i class="glyphicon glyphicon-user"></i>
+	                                   </span>
+							      <input type="text" name="name"class="form-control" id="name" placeholder="请输入清真寺名称">
+							    </div>
+							    <span class="msg"></span>
+							    </div>
+						  </div>
+						  <div class="text-center ">
+							    <label for="" class="col-md-2 control-label"></label>
+							    <div class="col-md-10">
+							    <div class="input-group">
+							      <span class="input-group-addon">
+	                                        <i class="glyphicon  glyphicon-lock"></i>
+	                                   </span>
+							      <input type="password" name="password"class="form-control" id="password" placeholder="密码">
+							    </div>
+							    </div>
+						  </div>
+					  
+						  <div class=" ">
+							    <label for="" class="col-md-2 control-label"></label>
+							    <div class="col-md-10">
+							    <div class="input-group">
+							      <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-pawn"></i>
+                                   </span>
+						      <input type="text" name="linkman"class="form-control" id="linkman" placeholder="请输入主持人\主要联系人">
+						    </div>
+						    </div>
+					  </div>
+					  <div class=" ">
+							    <label for="" class="col-md-2 control-label"></label>
+							    <div class="col-md-10">
+							    <div class="input-group">
+							      <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-envelope"></i>
+                                   </span>
+						      <input type="email" class="form-control validate[required,custom[email]]" name="email" placeholder="邮箱保存后无法修改，请慎重填写哦~" id="email">
+						    </div>
+						    </div>
+					  </div>
+					  <div class=" ">
+							    <label for="" class="col-md-2 control-label"></label>
+							    <div class="col-md-10">
+							    <div class="input-group">
+						       <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-phone"></i>
+                                   </span>
+						      <input type="text" name="mobile" class="form-control" id="mobile" placeholder="请输入手机">
+						    </div>
+						    </div>
+					  </div>
+					  
+						 <div class=" ">
+							    <label for="" class="col-md-2 control-label"></label>
+							    <div class="col-md-10">
+							    <div class="input-group">
+							      <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-indent-right"></i>
+                                        </span>
+                            	<select class="form-control" id="s_province" name="s_province"></select>
+							    <select class="form-control" id="s_city" name="s_city" ></select>
+							    <select class="form-control" id="s_county" name="s_county"></select>
+							    <script class="resources library " src="__MOBILE__/Js/city.js" type="text/javascript"></script>
+							    <script type="text/javascript">_init_area();</script>
+						      <input type="text" name="address" class="form-control" id="address" placeholder="请输入详细地址">
+						    </div>
+						    </div>
+					  </div>
+					  <div class=" text-center">
+							    <label for="" class="col-md-2 control-label"></label>
+							    <div class="col-md-10">
+							    <div class="input-group">
+						       <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-phone-alt"></i>
+                                   </span>
+						      <input type="text"  name="phone" class="form-control" id="phone" placeholder="请输入电话">
+						    </div>
+					  </div>
+					  </div>
+					<div class="intro-textarea text-center">
+					 <label for="" class="col-md-2 control-label"></label>
+                            <div class="col-md-10"> 
+                              <div   class="input-group">
+                              	<span class="input-group-addon"  >
+                                        <i class="glyphicon glyphicon-globe"></i>
+                                  </span>
+                                <textarea   name="intro" class="form-control validate[required,maxSize[50]]" rows="3" placeholder="花点时间介绍下自己，让穆民们了解下你" name="intro"></textarea>
+                            </div>
+                            </div>
+                        </div>
+				     <input type="hidden" name="submitAdd" id="submitAdd" value="1" />
+		             <input type="hidden" name="city_name" id="city_name" value="" />
+				  <div class="text-center">
+				    <div class="col-md-12">
+				      <button type="submit" id="submit" class="btn btn-success  btn-sm center-block" data-style="zoom-in"><i class="glyphicon glyphicon-registration-mark"></i>提交</button>
+				    </div>
+				  </div>
+				</form>
+			          </div> 	
+				<div class="row" data-animated="0">
+					<div class="col-md-12 text-center">
+					<a href="" class="btn btn-info call_button"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>拨打15909581102</a>
+				    </div>
+				  </div>
+		</div>
+  <include file="Public:footer"/>
+  <script type="text/javascript">
+var Gid  = document.getElementById ;
+var showArea = function(){
+	Gid('show').innerHTML = "<h6>省" + Gid('s_province').value + " - 市" + 	
+	Gid('s_city').value + " - 县/区" + 
+	Gid('s_county').value + "</h6>"
+							}
+Gid('s_county').setAttribute('onchange','showArea()');
+</script>
+ <script type="text/javascript">
+  $(document).ready(function(){
+	  var user = $("#name");
+	  alert("asd");
+	  var pwd  = $("#password");
+	  var pre=/^[a-zA-Z]\w{5,19}/;
+	  $("#submit").click(function(){
+		  alert("123");
+	  if(user.val()=="" || pwd.val()==""){
+	  alert("用户名或密码不能为空");
+	  $("#name").focus();
+	  return false;
+	  }
+	  if(!pre.test(user.val())){
+	  $(".msg").html("<font color='red'>用户名必须以英文字母开头，至少6位，至多20位！</font>");
+	  return false;
+	  }
+	/*   $.ajax({
+	  type:"POST",url:"rghandle.php",
+	  data:{username:$("#username").val(),password:$("#password").val()},
+	  beforeSend:function(){$(".msg").html("正在登录中...");},
+	  success:function(data){
+	  $(".msg").html(data);
+	  }
+	  }); */
+	  }); 
+	  });
+});
+  var PlaceHolder = {
+		    _support: (function() {
+		        return 'placeholder' in document.createElement('input');
+		    })(),
+
+		    //提示文字的样式，需要在页面中其他位置定义
+		    className: 'abc',
+
+		    init: function() {
+		        if (!PlaceHolder._support) {
+		            //未对textarea处理，需要的自己加上
+		            var inputs = document.getElementsByTagName('input');
+		            PlaceHolder.create(inputs);
+		        }
+		    },
+
+		    create: function(inputs) {
+		        var input;
+		        if (!inputs.length) {
+		            inputs = [inputs];
+		        }
+		        for (var i = 0, length = inputs.length; i <length; i++) {
+		            input = inputs[i];
+		            if (!PlaceHolder._support && input.attributes && input.attributes.placeholder) {
+		                PlaceHolder._setValue(input);
+		                input.addEventListener('focus', function(e) {
+		                    if (this.value === this.attributes.placeholder.nodeValue) {
+		                        this.value = '';
+		                        this.className = '';
+		                    }
+		                }, false);
+		                input.addEventListener('blur', function(e) {
+		                    if (this.value === '') {
+		                        PlaceHolder._setValue(this);
+		                    }
+		                }, false);
+		            }
+		        }
+		    },
+
+		    _setValue: function(input) {
+		        input.value = input.attributes.placeholder.nodeValue;
+		        input.className = PlaceHolder.className;
+		    }
+		};
+
+		//页面初始化时对所有input做初始化
+		PlaceHolder.init();
+  </script>

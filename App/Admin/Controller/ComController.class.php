@@ -88,4 +88,36 @@ class ComController extends BaseController
         }
         return $tree;
     }
+    /* 审核状态
+     * status参数
+     * 1：不通过
+     * 2：通过
+     * 模型用常量获取
+     */
+    public function status(){
+        $id = isset($_REQUEST['id'])?$_REQUEST['id']:false;
+        //id无效的
+        if(!$id){
+            $this->error('参数错误！');
+        }
+     
+        if ($_REQUEST['val']=="1"){
+            //申请审核通过
+            $val="2";
+            $tip="已经审核通过";
+        }else{
+            //关闭通过
+            $val="1";
+            $tip="已经审核不通过";
+        }
+        $model=M(CONTROLLER_NAME);
+        
+        $map['id']  = $id;
+        $data['status']=$val;
+        if($model->where($map)->save($data)){
+            $this->success($tip);
+        }else{
+            $this->error($tip);
+        }
+      }
 }

@@ -1,0 +1,14 @@
+<include file="Public:headjs"/>
+<body id="page-top">
+	<include file="Public:header" />
+		<div class="container">
+			 		<div class="list_back">
+						<input type="submit" value="生成二维码" class="btn btn-success" >
+						<img alt="" id=qrcode_img  src="__ROOT__/{$filename}">
+					</div> 
+			    图片地址:<a href='https://chart.googleapis.com/chart?cht=qr&chld=H&chs={$width}x{$height}&chl={$content}' target='_blank'>https://chart.googleapis.com/chart?cht=qr&chld=H&chs={$width}x{$height}&chl={$wen}</a><br />
+			               复制发给你的朋友。 <a href='javascript:history.go(-1);'>返回上一页</a>"; 
+		</div>
+  <include file="Public:footer"/>
+  <script type="text/javascript">
+  </script>
