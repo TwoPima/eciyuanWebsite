@@ -1,6 +1,32 @@
 <include file="Public:headjs" />
 <body id="page-top">
 <include file="Public:header" />
+<!--幻灯片开始  -->
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+   <!--  <li data-target="#carousel-example-generic" data-slide-to="1"></li> -->
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="__MOBILE__/Img/life/gongyi.jpg" alt="...">
+      <div class="carousel-caption">
+      </div>
+    </div>
+    </div>
+
+  <!-- Controls -->
+ <!--  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a> -->
+</div>
 	<div class="container">
 		<div class="life-body">
 			<div class="row">
@@ -18,8 +44,8 @@
 									 <volist name="OrganizeInfo" id="val">
 										<li class="list-unstyled">
 											<div class="row">
-											<empty name="$val.url">
-												<a href="$val.url" target="_blank">
+											<empty name="val.url">
+											<a href="__URL__/detail?sid={$val.sid}" target="_blank">
 												<div class="col-xs-3 col-sm-3 "><!--__ROOT__{$val.thumbnail}  -->
 														<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
 													</div>
@@ -29,7 +55,7 @@
 													</div>
 												</a>
 												<else /> 
-												<a href="__URL__/detail?sid={$val.sid}" target="_blank">
+													<a href="{$val.url}" target="_blank">
 													<div class="col-xs-3 col-sm-3 "><!--__ROOT__{$val.thumbnail}  -->
 														<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
 													</div>

@@ -158,7 +158,7 @@ class WechatAuth {
         $info = self::http("{$this->oauthApiURL}/userinfo", $query);
         return json_decode($info, true);
     }
-
+    
     /**
      * 上传零时媒体资源
      * @param  string $filename 媒体资源本地路径
@@ -629,5 +629,73 @@ class WechatAuth {
         $data['articles']     = $articles;
         return $data;
     }
+    /*   //快递查询函数
+     public  function kuaidi($keyword){
+    	        $keyword = trim(substr($keyword,6,strlen($keyword)-6));
+    	          $status=array('0'=>'查询出错','1'=>'暂无记录','2'=>'在途中','3'=>'派送中','4'=>'已签收','5'=>'拒收','6'=>'疑难件','7'=>'退回');//构建快递状态数组
+    	        $kuaidiurl="http://www.aikuaidi.cn/rest/?key=ff4735a30a7a4e5a8637146fd0e7cec9&order={$keyword}&id=shentong&show=xml";//快递地址
+    	        $kuaidistr=file_get_contents($kuaidiurl);//读入文件
+    	        $kuaidiobj=simplexml_load_string($kuaidistr);//xml解析
+    	        $kuaidistatus = $kuaidiobj->Status;//获取快递状态
+    	        $kuaistr=strval($kuaidistatus);//对象转换为字符串
+    	        $contentStr0 =$status[$kuaistr];//根据数组返回
+    	        foreach ($kuaidiobj->Data->Order as $a)
+    	         {    
+    	         foreach ($a->Time as $b)
+    	           {
+    		            foreach ($a->Content as $c)
+    		            {$m.="{$b}{$c}";}
+    		            }
+    		     }
+    		        //遍历获取快递时间和事件
+    		        $contentStr="你的快递单号{$keyword}{$contentStr0}{$m}";
+    		        return $contentStr;
+    		  } */
+    /* 马晓成追加函数 */
 
+        //获得用户的openid，
+        public function getOpenId() {
+            $redirect_uri = "http://testwxpress.ngrok.natapp.cn/index.php/Home/Index/getCode";
+            $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0c158e25dc8f35f4&redirect_uri=' . urlencode($redirect_uri) . '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect';
+            header("Location:" . $url);
+        }
+ //获取二维码       
+   public function getCode() {
+            if (session("token")) {
+                $expire_time = session("expire_time");
+                if (($expire_time + 7200) < time()) {
+                    exit("token已过期");
+                }
+                $token = session("token");
+                $openid = session("openid");
+            } else {
+                $appid = "%%%%%%%%%%%%%%%%%%%";
+                $secret = "XXXXXXXXXXXXXXXXXXXXXX";
+        
+                // 获取用户openid
+                $code = I("get.code");
+                $get_access_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=$appid&secret=$secret&code=$code&grant_type=authorization_code";
+                $res1 = json_decode(file_get_contents($get_access_token_url));
+                $openid = $res1->openid;
+                //            获取公众号的access_token，此access_token不是用户授权后的access_token
+                $get_token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$secret";
+                $res2 = json_decode(file_get_contents($get_token_url));
+                $token = $res2->access_token;
+                if ($token) {
+                    session("token", $token);
+                    session("openid", $openid);
+                    session("expire_time", time());
+                } else {
+                    exit("未请求到access_token");
+                }
+            }
+            $subscribe_msg = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$token&openid=$openid";
+            $subscribe_info = file_get_contents($subscribe_msg);
+            $subscribe_info = json_decode($subscribe_info);
+            if($subscribe_info->subscribe){
+                echo '已关注';
+            }else{
+                echo "未关注";
+            }
+        }
 }

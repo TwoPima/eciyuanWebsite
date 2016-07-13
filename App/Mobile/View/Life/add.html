@@ -1,0 +1,312 @@
+<include file="Public:headjs"/>
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+		<link rel="stylesheet" href="__MOBILE__/Css/reg/css/form-elements.css">
+        <link rel="stylesheet" href="__MOBILE__/Css/reg/css/style.css">
+
+       </head>
+<body id="page-top" class="addCompany">
+	<include file="Public:header" />
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+   <!--  <li data-target="#carousel-example-generic" data-slide-to="1"></li> -->
+  </ol>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="__MOBILE__/Img/life/addcompany.jpg" alt="...">
+      <div class="carousel-caption">
+      </div>
+    </div>
+    </div>
+
+  <!-- Controls -->
+ <!--  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a> -->
+</div>
+                <div class="container">
+                    	  <div class="row "data-animated="1">
+						   <div class="col-md-3">
+						   			<div class="cate-content text-center">
+								   			<span><i class="fa fa-sitemap fa-5x" aria-hidden="true"></i></span>
+								   			<h4>服饰企业</h4>
+								   			<p class="text-center">面向服饰行业，加入服饰行业的电商，分享亿万移动用户</p>
+						   			</div>
+						   </div>
+						   <div class="col-md-3">
+						 			  <div class="cate-content text-center">
+								   			<span><i class="fa fa-inbox fa-5x" aria-hidden="true"></i></span>
+								   			<h4>食品企业</h4>
+								   			<p class="text-center">面向食品行业，加入食品行业的电商，分享亿万移动用户</p>
+						   			</div>
+						   </div>
+						   <div class="col-md-3">
+						 		  <div class="cate-content text-center">
+								   			<span><i class="fa fa-building fa-5x" aria-hidden="true"></i></span>
+								   			<h4>房产企业</h4>
+								   			<p class="text-center">面向房产行业，让您潜在的客户无限极增大，分享亿万移动用户</p>
+						   			</div>
+						   </div>
+						   <div class="col-md-3">
+						  			 <div class="cate-content text-center">
+								   			<span><i class="fa fa-car fa-5x" aria-hidden="true"></i></span>
+								   			<h4>旅行企业</h4>
+								   			<p class="text-center">面向旅行行业，培养专业品牌，分享亿万移动用户</p>
+						   			</div>
+						   </div>
+				  </div>
+						<div class="row" data-animated="0">
+							<div class="liucheng">
+							<div class="col-md-12 ">
+									 	<h4 class="merchant_tit">入住流程</h4>
+									</div>
+							 </div>
+						</div>
+						<div class="row  " data-animated="0">
+									<div class="col-md-3   text-center ">
+						        			<div class="floor fl ">
+						        				<span>1</span>
+						        					<div>申请入驻</div>
+						        				</div>
+						        	</div>
+								<div class="col-md-3  text-center">
+								        			 <div class="floor fl"><span>2</span><div>创建账户</div></div>
+								        	 </div>
+								       <div class="col-md-3 text-center">
+								        	<div class="floor fl"><span>3</span><div>认证资料</div></div>
+								        	</div>
+								       <div class="col-md-3  text-center">
+								        	<div class="floor fl"><span>4</span><div>填写运营信息</div></div>
+								        	</div>
+							<div class="col-md-3  text-center">
+							 	<div class="floor fl"><span>5</span><div>签署协议提交</div></div>
+							 </div>
+						</div>
+	   						 
+	   						 
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<form  id="reg-form" role="form" action="__APP__/Mobile/Company/add" method="post" class="registration-form">
+                        		<fieldset>
+		                        	<div class="form-top">
+		                        		<div class="form-top-left">
+		                        			<h3>步骤1 / 5</h3>
+		                            		<p>申请入驻</p>
+		                        		</div>
+		                        		<div class="form-top-right">
+		                        			<i class="fa fa-user"></i>
+		                        		</div>
+		                            </div>
+		                            <div class="form-bottom">
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-name">企业名称</label>
+				                        	<input type="text" name="name" placeholder="请输入企业名称" class="form-control" id="name">
+				                        </div>
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-name">企业地址</label>
+				                        		<select class="form-control valid" id="s_province" name="s_province"></select>
+												    <select class="form-control valid" id="s_city" name="s_city" ></select>
+												    <select class="form-control valid" id="s_county" name="s_county"></select>
+												    <script class="resources library " src="__MOBILE__/Js/city.js" type="text/javascript"></script>
+												    <script type="text/javascript">_init_area();</script>
+											      <input type="text" name="address" class="form-control valid" id="address" placeholder="请输入企业详细街道地址">
+											    </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-intro">基本介绍</label>
+				                        	<textarea name="intro" placeholder="请输入您的企业的基本概况信息" 
+				                        				class="form-intro form-control" id="intro"></textarea>
+				                        </div>
+				                        	   <div class="form-group inline">
+				                        	 <label class="control-label">行业类型</label>
+									              <input type="radio" value="1" checked="checked" name="trade">
+									             服饰
+									              <input type="radio" value="2" name="trade">
+									            美食
+									              <input type="radio" value="3" name="trade">
+									             房产
+									              <input type="radio" value="4" name="trade">
+									                旅行
+									              <input type="radio" value="5" name="trade">
+									        其他    
+									            </div>
+				                        	<div class="form-group inline">
+				                        	 <label class="control-label">企业类型</label>
+									              <input type="radio" value="1" checked="checked" name="type">
+									 			           企业用户
+									              <input type="radio" value="2" name="type">
+									       		        个体工商户
+									            </div>
+				                        	<!-- <div class="form-group inline">
+				                        	 <label class="control-label">清真食品类型</label>
+										              <input type="radio" value="1" name=ifqingzhen>
+											              非清真
+											              <input type="radio" value="2"  checked="checked" name="ifqingzhen">
+											              清真
+						       					   </div> -->
+				                        <button type="button" class="btn btn-next">下一步</button>
+				                    </div>
+			                    </fieldset>
+			                    
+			                    <fieldset>
+		                        	<div class="form-top">
+		                        		<div class="form-top-left">
+		                        			<h3>步骤2 / 5</h3>
+		                            		<p>创建账户</p>
+		                        		</div>
+		                        		<div class="form-top-right">
+		                        			<i class="fa fa-key"></i>
+		                        		</div>
+		                            </div>
+		                            <div class="form-bottom">
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-email">Email</label>
+				                         <input type="text" class="form-control" name="email" placeholder="邮箱保存后无法修改，请慎重填写哦~" id="email">
+								        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-last-name">密码</label>
+				                        	  <input type="password" placeholder="密码" id="password" class="form-control"  name="password">
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-last-name">重复密码</label>
+				                        	   <input type="password" placeholder="请再次输入密码验证" class="form-control" name="repassword" id="repassword">
+							  				 </div>
+				                        <button type="button" class="btn btn-previous">上一步</button>
+				                        <button type="button" class="btn btn-next">下一步</button>
+				                    </div>
+			                    </fieldset>
+			                          <fieldset>
+		                        	<div class="form-top">
+		                        		<div class="form-top-left">
+		                        			<h3>步骤3 / 5</h3>
+		                            		<p>认证资料填写</p>
+		                        		</div>
+		                        		<div class="form-top-right">
+		                        			<i class="fa fa-key"></i>
+		                        		</div>
+		                            </div>
+		                            <div class="form-bottom">
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="">社会统一信用代码</label>
+			                        	   <input type="text" name="code" placeholder="社会统一信用代码..." class="form-control" id="code">
+		                        	     </div>
+				                        <div class="form-group">
+				                        	<div class=" ">{:UpImage("license",200,100,$article['license'])}</div>
+												<span class="bg-warning">上传营业执照:仅支持jpg、gif、png、bmp、jpeg，且小于5MB。</span>
+		                        	     </div>
+				                        <div class="form-group">
+				                        	<div class=" ">{:UpImage("qingzhen",200,100,$article['qingzhen'])}</div>
+												<span class="bg-warning">上传清真许可证:仅支持jpg、gif、png、bmp、jpeg，且小于5MB。</span>
+		                        	     </div>
+		                        	     <div class="form-group">
+				                        <button type="button" class="btn btn-previous">上一步</button>
+				                        <button type="button" class="btn btn-next">下一步</button>
+				                        </div>
+				                    </div>
+			                 
+			                    </fieldset>
+			                    <fieldset>
+		                        	<div class="form-top">
+		                        		<div class="form-top-left">
+		                        			<h3>步骤4 / 5</h3>
+		                            		<p>运营者信息填写:</p>
+		                        		</div>
+		                        		<div class="form-top-right">
+		                        			<i class="fa fa-twitter"></i>
+		                        		</div>
+		                            </div>
+		                            <div class="form-bottom">
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="form-facebook">运营者信息</label>
+				                    		 <input type="text" name="linkman"class="form-control" id="linkman" placeholder="请输入运营者姓名">
+				                        </div>
+				                         <div class="form-group">
+				                        	<label class="sr-only" for="form-google-plus">运营者身份证</label>
+				                        	<input type="text" name="linkIdcard" placeholder="运营者身份证..." class="linkIdcard form-control" id="linkIdcard">
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-twitter">手机</label>
+				                        	  <input type="text" name="link_mobile" class="form-control" id="link_mobile" placeholder="请输入手机">
+								 			</div>
+				                        <button type="button" class="btn btn-previous">上一步</button>
+				                        <button type="button" class="btn btn-next">下一步</button>
+				                    </div>
+			                    </fieldset>
+			                    <fieldset>
+		                        	<div class="form-top">
+		                        		<div class="form-top-left">
+		                        			<h3>步骤5 / 5</h3>
+		                            		<p>签署协议</p>
+		                        		</div>
+		                        		<div class="form-top-right">
+		                        			<i class="fa fa-twitter"></i>
+		                        		</div>
+		                            </div>
+		                            <div class="form-bottom">
+								 			 <!--注册协议  -->  
+					                        <div class="box">
+					                            <div class="box-header panel-heading bg-warning text-center" role="tab" id="headingThree">
+					                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#xieyi" aria-expanded="false" aria-controls="collapseThree">
+					      												<span>查看注册协议</span>
+					      												 </a>
+					                            </div>
+					                            <div id="xieyi" class=" box-body panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+					                                <!-- 注册协议 -->
+														<div class="reg_protocol">
+															<div>
+															1. 伊媒微时代暂未授权任何机构进行代理招商服务，入驻申请流程及相关的收费说明均以官方招商页面为准。
+														2. 伊媒微时有权根据包括但不仅限于品牌需求、公司经营状况、服务水平等其他因素退回客户申请；同时伊媒微时代网有权在申请入驻及后续经营阶段要求客户提供其他资质；伊媒微时代网将结合各行业发展动态、国家相关规定及消费者购买需求，不定期更新招商标准。
+														3. 请务必确保您申请入驻及后续经营阶段提供的相关资质的真实性（若您提供的相关资质为第三方提供，如商标注册证、授权书等，请务必先行核实文件的真实有效性），一旦发现虚假资质，您的公司将被列入非诚信客户名单，伊媒微时代网将不再与您进行合作。
+														4. 伊媒微时代暂不接受个体工商户的入驻申请，也不接受非中国大陆企业的入驻申请。
+														5. 伊媒微时代暂不接受未取得国家商标总局颁发的商标注册证或商标受理通知书的品牌开店申请（部分类目的进口商品除外），也不接受纯图形类商标的入驻申请。
+															</div>
+														</div>
+														<div class="btn btn-block btn-large btn-info">
+															  <input type="checkbox" value="1" checked="checked" name="agreement"><span>同意接收来自本网站的信息</span>
+														</div>											     
+					                            </div>
+					                        </div>
+					                           <input type="hidden" name="submitAdd" id="submitAdd" value="1" />
+				                        <button type="button" class="btn btn-previous">上一步</button>
+				                        <button type="submit" class="btn">提交入驻</button>
+				                    </div>
+			                      </fieldset>
+		                    </form>
+                        </div>
+                    </div>
+	<footer data-animated="0">
+				<p><a href="http://www.eciyuan.net"> {$Think.CONFIG.footer}</a></p>
+				<a href="#page-top" class="backtotop-icon page-scroll"></a>
+			</footer>
+			</div>
+        <!-- Javascript -->
+        <script src="__MOBILE__/Css/reg/js/jquery-1.11.1.min.js"></script>
+        <script src="__MOBILE__/Css/reg/js/jquery.backstretch.min.js"></script>
+        <script src="__MOBILE__/Css/reg/js/retina-1.1.0.min.js"></script>
+        <script src="__MOBILE__/Css/reg/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="__MOBILE__/Css/reg/js/placeholder.js"></script>
+        <![endif]-->
+        			
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+         <script type="text/javascript">
+var Gid  = document.getElementById ;
+var showArea = function(){
+	Gid('show').innerHTML = "<h6>省" + Gid('s_province').value + " - 市" + 	
+	Gid('s_city').value + " - 县/区" + 
+	Gid('s_county').value + "</h6>"
+							}
+Gid('s_county').setAttribute('onchange','showArea()');
+</script>
+    </body>
+
+</html>

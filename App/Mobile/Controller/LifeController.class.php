@@ -27,7 +27,7 @@ class LifeController extends ComController {
         
         $parentClothes=M('Clothes')->where($where)->field("s_province")->distinct(true)->select();//提取城市
         $this->assign('ClothesCity',$parentClothes);
-        
+   
         $parentHousing=M('Housing')->where($where)->field("s_province")->distinct(true)->select();//提取城市
         $this->assign('HousingCity',$parentHousing);
         

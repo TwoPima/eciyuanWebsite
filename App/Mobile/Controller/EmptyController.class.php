@@ -7,7 +7,7 @@
 // | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
 // +----------------------------------------------------------------------
 
-namespace WeChatAPI\Controller;
+namespace Mobile\Controller;
 
 /**
  * 空模块，主要用于显示404页面，请不要删除

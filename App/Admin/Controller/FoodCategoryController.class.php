@@ -19,6 +19,9 @@ class FoodCategoryController extends ComController {
 		$FoodCategory = M('FoodCategory')->order('sort asc')->select();
 		$FoodCategory = $this->getMenu($FoodCategory);
 		$this->assign('category',$FoodCategory);
+		//企业
+		$company = M('Company')->field('id,name')->order('create_time desc')->select();
+		$this->assign('company',$company);//导航
 		$this -> display();
 	}
 	
@@ -51,8 +54,8 @@ class FoodCategoryController extends ComController {
 		$tree = new Tree($FoodCategory);
 		$str = "<option value=\$id \$selected>\$spacer\$name</option>"; //生成的形式
 		$FoodCategory = $tree->get_tree(0,$str, $currentFoodCategory['pid']);
-		
 		$this->assign('category',$FoodCategory);
+
 		$this -> display();
 	}
 	

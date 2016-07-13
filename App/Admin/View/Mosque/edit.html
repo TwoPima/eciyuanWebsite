@@ -46,15 +46,21 @@
 									</div>
 									<div class="space-4"></div>
 									<div class="form-group">
-										<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 主持人或者密码 </label>
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 主持人 </label>
 										<div class="col-sm-9">
-											<if condition="$type eq 2">
 											<input type="linkman" name="linkman" id="linkman" placeholder="" class="col-xs-10 col-sm-5" value="{$Mosque.linkman}">
-											<else />
-												<input type="password" name="password" id="password" placeholder="密码" class="col-xs-10 col-sm-5" value="">
-											</if>
 											<span class="help-inline col-xs-12 col-sm-7">
-												<span class="middle">若为密码则为主持人类型，可以修改密码</span>
+												<span class="middle">主持人</span>
+											</span>
+										</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2">密码 </label>
+										<div class="col-sm-9">
+												<input type="password" name="password" id="password" placeholder="密码" class="col-xs-10 col-sm-5" value="">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle">修改密码</span>
 											</span>
 										</div>
 									</div>
@@ -75,7 +81,7 @@
 									<div class="form-group">
 										<label class="col-sm-1 control-label no-padding-right" for="form-field-4">二维码 </label>
 										<div class="col-sm-9">
-											<div class="col-xs-10 col-sm-5">{:UpImage("head",100,100,$Mosque['qrcode'])}</div>
+											<div class="col-xs-10 col-sm-5">{:UpImage("qrcode",100,100,$Mosque['qrcode'])}</div>
 											<span class="help-inline col-xs-12 col-sm-7">
 												<span class="middle">仅支持jpg、gif、png、bmp、jpeg，且小于1MB。</span>
 											</span>
@@ -86,9 +92,9 @@
 									<div class="space-4"></div>
 
 									<div class="form-group">
-										<label class="col-sm-1 control-label no-padding-right" for="form-field-6"> 电话号码 </label>
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-6"> 手机号码 </label>
 										<div class="col-sm-9">
-											<input type="text" name="phone" id="phone" placeholder="电话号码" class="col-xs-10 col-sm-5" value="{$Mosque['phone']}">
+											<input type="text" name="mobile" id="mobile" placeholder="手机号码" class="col-xs-10 col-sm-5" value="{$Mosque['mobile']}">
 											<span class="help-inline col-xs-12 col-sm-7">
 												<span class="middle"></span>
 											</span>
@@ -147,7 +153,6 @@
 									</div>
 
 									<div class="space-4"></div>
-
 									<div class="form-group">
 										<label class="col-sm-1 control-label no-padding-right" for="form-field-8"> E-mail </label>
 										<div class="col-sm-9">
@@ -157,9 +162,14 @@
 											</span>
 										</div>
 									</div>
-								
 									<div class="space-4"></div>
-									
+								<div class="form-group onlyInsite">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-2">基本介绍 </label>
+										<div class="col-sm-9">
+											<textarea name="intro" id="intro" style="width:100%;height:400px;visibility:hidden;">{$Mosque['intro']}</textarea>
+										</div>
+									</div>
+									<div class="space-4">控制在400字以内 可以图文并茂</div>
 									<div class="col-md-offset-2 col-md-9">
 										<button class="btn btn-info" type="submit">
 											<i class="icon-ok bigger-110"></i>
@@ -185,6 +195,16 @@
 
 		<include file="Public/footerjs" />
 		<!-- inline scripts related to this page -->
+		<script type="text/javascript">
+		$(function() {
+			var editor = KindEditor.create('textarea[name="intro"]',{
+				uploadJson : '__PUBLIC__/kindeditor/php/upload_json.php',
+				fileManagerJson : '__PUBLIC__/kindeditor/php/file_manager_json.php',
+				allowFileManager : true,
+				afterBlur:function(){this.sync();}  
+				});
+		});
+		</script>
 		<script src="__PUBLIC__/qwadmin/js/date-time/bootstrap-datepicker.js"></script>
 		<script src="__PUBLIC__/qwadmin/js/function.js"></script>
 	</body>

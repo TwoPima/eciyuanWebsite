@@ -17,23 +17,9 @@ class ComController extends Controller {
 	    Load('extend');
 	    import("ORG.Util.Page"); //载入分页类
 		C(setting());
-	  		//导航数据组装
-		$result = M('Category')->where('topsite=1')->order('o ASC')->select();
-		$article_cate_list = array();
-		foreach ($result as $val) {
-			if ($val['pid']==0) {
-				$article_cate_list['parent'][$val['id']] = $val;
-			} else {
-				$article_cate_list['sub'][$val['pid']][] = $val;
-			}
-		}
-		$this->assign('article_cate_list',$article_cate_list); 
-		
-		$links = M('links')->limit(10)->order('o ASC')->select();
-		$this->assign('links',$links);
-		
+   
+  
     }
-    
     public function getCity($ip){
         //ip地址转换
         import('ORG.Net.IpLocation');// 导入IpLocation类

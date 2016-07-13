@@ -123,7 +123,9 @@ class MosqueController extends ComController {
 		if($qrcode<>'') {
 			$data['qrcode'] = $qrcode;
 		}
-		$data['phone'] = isset($_POST['phone'])?trim($_POST['phone']):'';
+		$data['head'] = I('post.head','','strip_tags');
+		$data['qrcode'] = I('post.qrcode','','strip_tags');
+		$data['mobile'] = isset($_POST['mobile'])?trim($_POST['mobile']):'';
 		$data['linkman'] = isset($_POST['linkman'])?trim($_POST['linkman']):'';
 		$data['qq'] = isset($_POST['qq'])?trim($_POST['qq']):'';
 		$data['email'] = isset($_POST['email'])?trim($_POST['email']):'';
@@ -131,6 +133,7 @@ class MosqueController extends ComController {
 		$data['s_county'] = isset($_POST['s_county'])?trim($_POST['s_county']):'';
 		$data['s_city'] = isset($_POST['s_city'])?trim($_POST['s_city']):'';
 		$data['address'] = isset($_POST['address'])?trim($_POST['address']):'';
+		$data['intro'] = isset($_POST['intro'])?$_POST['intro']:false;
 		$data['update_time'] = time();
 		$data['name'] = $user;
 		$password = isset($_POST['password'])?trim($_POST['password']):false;

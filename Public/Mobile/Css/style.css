@@ -17,32 +17,6 @@ Version:1.0
 	6. Services
 	7. Tab Styles
 	8. Portfolio
-	9. Blog Styles
-	10. Pricing Table 
-	11. Testimonial 
-	12. Icons Wrap
-	13. Vertical Tab
-	14. Timeline Styles
-	15. Shop Styles
-	16. Promo Content
-	17. Footer
-		- 17.1. Contact form 
-		- 17.2. Contact Info 
-		- 17.3. Flickrfeed
-		- 17.4. Copyright Info
-	18. Subpages
-		- 18.1. Page header
-			18.1.1 Breadcrumbs 
-		- 18.2 Extras 
-	19 Team Styles
-	20. Skills Styles
-	21. Clients
-	22. Blog - Single Page
-		- 22.1. Comments
-	23. Contact Page
-		- 23.1. Map Styles
-	24. Sidebar Styles
-
 -------------------------------------------------------------------*/
 
 /*------------------------------------------------- 
@@ -62,8 +36,9 @@ dl,dt,dd,ul,ol,li {
 	margin: 0;
 	padding: 0;
 }
-.glyphicon{
+.glyphicon,.fa{
 	margin-right:10px;
+	color:#2B689C;
 }
 p {
 	font-size: 14px;
@@ -72,15 +47,16 @@ p {
 
 a {
 	transition: .3s;
-color: #5f5f5f;
-font-family: "Titillium Web", sans-serif;
-font-weight: 600;
-transition: all .5 linear;
+	font-family: "Titillium Web", sans-serif;
+	font-weight: 600;
+	color:#1F9DD9;
+	transition: all .5 linear;
 } 
 a:link {text-decoration:none;} 
-a:active:{color: red; } 
-a:visited {color:purple;text-decoration:none;} 
-a:hover {color: red; text-decoration:underline;} 
+a:active:{color:#5BA1A1; } 
+a:visited {text-decoration:none;} 
+.margin-right-left-5 a:visited {color:#5BA1A1;text-decoration:none;} 
+a:hover {color:#5BA1A1; text-decoration:underline;} 
 h1,
 h2,
 h3,
@@ -91,12 +67,13 @@ h6 {
 	font-weight: 400;
 }
 img{max-width:100%;}
+
 .container{
-	padding-top:20px;
-	padding-bottom:10px;
+		padding-top:20px;
+		padding-bottom:10px;
 		padding-left:0;
 		padding-right:0;
-	margin:0;
+		margin:0;
 }
 .row{
 	padding:0;
@@ -513,204 +490,6 @@ background: transparent;
 	transition: 0.4s;
 }
 
-/*------------------------------------------------- 
-                  7. Tab Styles
--------------------------------------------------*/
-
-#features-tab {
-	background: #fff;
-	padding: 30px;
-	margin-bottom: 30px;
-}
-
-.nav-tabs {
-	padding: 0 35px 22px;
-	border-bottom: 1px solid #000;
-	display: table;
-	width: 100%;
-}
-
-.nav-tabs li {
-	font-size: 15px;
-	font-family: Montserrat;
-	font-weight: 400;
-	color: #8d8d8d;
-	float: left;
-	list-style: none;
-	margin: 0 34px;
-	border: none;
-	position: relative;
-}
-
-.nav-tabs li:after {
-	content: "/";
-	font-size: 15px;
-	color: #e7e7e7;
-	position: absolute;
-	left: -34px;
-	top: 0px;
-	font-weight: 400;
-}
-
-.nav-tabs li:first-child:after {
-	display: none;
-}
-
-.nav-tabs li a {
-	color: #8d8d8d;
-	border: none;
-	padding: 0 0 15px !important;
-	margin: 0px !important;
-	padding-bottom: 15px;
-	position: relative;
-}
-
-.nav-tabs li.active a, .nav-tabs li a:hover {
-	color: #000 !important;
-	border: none !important;
-	border-radius: 0px;
-}
-
-.nav-tabs li.active a:after {
-	content: "";
-	background: url(../Img/icons/bubble.png);
-	width: 15px;
-	height: 9px;
-	margin: 0 auto;
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: -17px;
-	z-index: 9999;
-}
-
-.tab-content {
-	border: 1px solid #ececec;
-	border-top: 0px;
-	margin-top: -10px;
-	padding: 35px 30px 30px;
-}
-
-.tab-right-content {
-	padding-left: 0px;
-}
-
-.tab-left-content {
-	padding-right: 0px;
-}
-
-.tab-content h4 {
-	font-size: 15px;
-	font-weight: bold;
-	text-transform: uppercase;
-	color: #000;
-	margin: 23px 0 12px;
-}
-
-.tab-content p {
-	font-size: 15px;
-	color: #717171;
-	font-weight: 300;
-	line-height: 21px;
-	margin: 0 0 22px;
-}
-
-/*------------------------------------------------- 
-                  8. Portfolio
--------------------------------------------------*/
-
-#m-portfolio {
-	padding: 30px 30px 0;
-	background: #fff;
-	margin-bottom: 30px;
-}
-
-#m-portfolio h3 {
-	font-size: 20px;
-	text-transform: uppercase;
-	color: #000;
-	margin: 0 0 20px;
-	text-align: center;
-}
-
-#m-portfolio .col-md-4 {
-	margin-bottom: 30px;
-}
-
-.mp-thumb {
-	position: relative;
-	cursor: pointer;
-	overflow: hidden;
-}
-
-.mp-thumb  img{
-	width:100%;
-}
-
-.overlay1 {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.20);
-	opacity: 1;
-	visibility: visible;
-	transition: 0.6s;
-}
-
-.overlay1 h4 {
-	padding: 7px 10px;
-	background: rgba(0, 0, 0, 0.6);
-	display: table;
-	margin: 50% auto 0px;
-	font-family: Roboto;
-	font-size: 13px;
-	color: #FFF;
-	position: relative;
-	top: -25%;
-}
-
-.overlay1-hr {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	width: 100%;
-	height: 100%;
-	opacity: 0;
-	visibility: hidden;
-	transition: 0.6s;
-}
-
-.zoom {
-	color: #000;
-	position: relative;
-	width: 61px;
-	height: 61px;
-	position: absolute;
-	bottom: -61px;
-	left: -61px;
-	transition: 0.4s;
-}
-
-.zoom:after {
-	content: "";
-	position: absolute;
-	top: 0;
-	right: 0;
-	border-width: 0 61px 61px 0;
-	border-style: solid;
-	border-color: #fff transparent;
-	transition: 0.4s;
-}
-
-.zoom i {
-	position: relative;
-	z-index: 999;
-	padding: 36px 12px;
-}
 
 .link {
 	color: #000;
@@ -740,45 +519,6 @@ background: transparent;
 	padding: 11px 40px;
 }
 
-.mp-thumb:hover .overlay1-hr {
-	opacity: 1;
-	visibility: visible;
-	transition: 0.6s;
-}
-
-.mp-thumb:hover .overlay1 {
-	opacity: 0;
-	visibility: hidden;
-	transition: 0.6s;
-}
-
-.mp-thumb:hover .link {
-	top: 0px;
-	right: 0px;
-	transition: 0.4s;
-}
-
-.mp-thumb:hover .zoom {
-	bottom: 0px;
-	left: 0px;
-	transition: 0.4s;
-}
-
-.mp-thumb .link:hover, .mp-thumb .zoom:hover {
-	color: #fff;
-}
-
-.zoom:hover:after {
-	content: "";
-	border-color: rgba(0,0,0,0.6) transparent;
-	transition: 0.4s;
-}
-
-.link:hover:after {
-	content: "";
-	border-color: transparent rgba(0,0,0,0.6);
-	transition: 0.4s;
-}
 
 /*------------------------------------------------- 
                   9. Blog Styles
@@ -3018,6 +2758,9 @@ article p {
 	padding-left:5px;
 	padding-right:5px;
 }
+#City span{
+	margin-right:3px;
+}
 .clothes,.food,.carry,.housing,.theme{
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
@@ -3060,9 +2803,6 @@ overflow: hidden;
 .blog_next_prev span{
 	width:20%;
 }
-.blog_next_prev li a:link, .blog_next_prev li a:visited, .blog_next_prev li a:hover {
-color: #333;
-}
 /***主题之约开始**/
 .index-body{
 	padding-left:5px;
@@ -3093,7 +2833,6 @@ color: #333;
 }
 .info-item .val {
 	font-family:arial, sans-serif; font-size:8px;
-	border:1px solid red;
 	width:70%;
 }
 .info-item .key {
@@ -3104,11 +2843,16 @@ color: #333;
 .info-item span {
 	margin-left:10px;
 }
-.list-group-item .qrcode img{
-	clear: both; 
-	display: block; 
-	margin:auto; 
+#qrcode_img{
+	height:auto;
+	max-height:200px;
+	min-height:80px;
+	min-width:80px;
+	max-width:200px;
 }
 .list-group-item p{
 	font-size:50%;
 }
+/*-----------------------
+		增加清真寺生成二维码
+------------------------*/

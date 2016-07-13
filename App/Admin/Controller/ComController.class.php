@@ -113,6 +113,8 @@ class ComController extends BaseController
         $model=M(CONTROLLER_NAME);
         
         $map['id']  = $id;
+        $map['aid']  = $id;
+        $map['_logic']  = "or";
         $data['status']=$val;
         if($model->where($map)->save($data)){
             $this->success($tip);

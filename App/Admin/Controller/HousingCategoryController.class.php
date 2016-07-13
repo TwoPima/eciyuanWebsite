@@ -94,7 +94,7 @@ class HousingCategoryController extends ComController {
 		}
 		if($id){
 			if(M('HousingCategory')->data($data)->where('id='.$id)->save()){
-				addlog('文章分类修改，ID：'.$id.'，名称：'.$data['name']);
+				addlog('分类修改，ID：'.$id.'，名称：'.$data['name']);
 				die('1');
 			}
 		}else{

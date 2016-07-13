@@ -28,23 +28,23 @@
 									 <volist name="list" id="val">
 										<li class="list-unstyled">
 											<div class="row">
-											<empty name="$val.url">
-																<a href="$val.url" target="_blank">
-																	<div class="col-xs-3 col-sm-3 ">
-																	<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
-																	</div>
-																	<div class="blog-content">
-																		<i class="fa fa-hand-o-right" aria-hidden="true"></i>{$val.title|msubstr=0,18,'utf-8',false}
-																	</div>
-																</a>
-																<else />
-																<a href="__URL__/detail?id={$sub.aid}" target="_blank">
-																<div class="col-xs-3 col-sm-3 "><!--__ROOT__{$val.thumbnail}  -->
-																<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
-															</div>
-															<div class="blog-content">
-																<i class="fa fa-hand-o-right" aria-hidden="true"></i>{$val.title|msubstr=0,18,'utf-8',false}
-															</div>
+											<empty name="val.url">
+												<a href="__URL__/detail?id={$sub.aid}" target="_blank">
+													<div class="col-xs-3 col-sm-3 ">
+													<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
+													</div>
+													<div class="blog-content">
+														<i class="fa fa-hand-o-right" aria-hidden="true"></i>{$val.title|msubstr=0,18,'utf-8',false}
+													</div>
+												</a>
+												<else />
+												<a href="$val.url" target="_blank">
+												<div class="col-xs-3 col-sm-3 "><!--__ROOT__{$val.thumbnail}  -->
+												<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__ROOT__{$val.thumbnail}"/>
+											</div>
+											<div class="blog-content">
+												<i class="fa fa-hand-o-right" aria-hidden="true"></i>{$val.title|msubstr=0,18,'utf-8',false}
+											</div>
 														</a>
 														</empty>
 											</div>

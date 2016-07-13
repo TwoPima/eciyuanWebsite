@@ -2,13 +2,53 @@
 <body id="page-top">
 	<include file="Public:header" />
 		<div class="container">
-			 		<div class="list_back">
-						<input type="submit" value="生成二维码" class="btn btn-success" >
-						<img alt="" id=qrcode_img  src="__ROOT__/{$filename}">
-					</div> 
-			    图片地址:<a href='https://chart.googleapis.com/chart?cht=qr&chld=H&chs={$width}x{$height}&chl={$content}' target='_blank'>https://chart.googleapis.com/chart?cht=qr&chld=H&chs={$width}x{$height}&chl={$wen}</a><br />
-			               复制发给你的朋友。 <a href='javascript:history.go(-1);'>返回上一页</a>"; 
+			   <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingOne">
+			      <h4 class="panel-title text-center">
+			        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#qrcode" aria-expanded="true" aria-controls="collapseOne">
+			       		 <i class="glyphicon glyphicon-qrcode"></i>
+						<span class="card-title">{$name}二维码</span>
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="addMoqueQrcode" class="panel-collapse collapse in " role="tabpanel" aria-labelledby="headingOne">
+				      <div class="panel-body text-center">
+				      		<ul class="list-group">
+								 	<li class="list-group-item mosqueqrcode">
+								 			<p class="text-info btn-center"><img alt=""   src="__ROOT__/{$filename}"></p>
+								 	</li>
+								 	<li class="list-group-item list-group-item-warning center-block">
+								 			<p class="text-info btn-center">通过该二维码关注该清真寺，以后相关的资讯和通知通过该平台发布</p>
+								 			<a href="javascript:;" onclick="DownLoadReportIMG('__ROOT__/."{$filename}"');" class="btn btn-primary  btn-center" >保存二维码并在微信扫描</a>
+								 			<p class="text-muted btn-center">扫一扫界面->点相册->选择二维码图片</p>
+								 	</li>
+							</ul>
+								<div class="pull-right ">
+									<a href="__URL__/perMosque" class="button-returnList"><span class="glyphicon glyphicon-forward"></span>进入主页</a>
+								</div>
+				      </div>
+			    </div>
+			  </div>
+			  
 		</div>
   <include file="Public:footer"/>
   <script type="text/javascript">
+  function DownLoadReportIMG(imgPathURL) {  
+      
+      //如果隐藏IFRAME不存在，则添加  
+      if (!document.getElementById("IframeReportImg"))  
+          $('<iframe style="display:none;" id="IframeReportImg" name="IframeReportImg" onload="DoSaveAsIMG();" width="0" height="0" src="about:blank"></iframe>').appendTo("body");  
+      if (document.all.IframeReportImg.src != imgPathURL) {  
+          //加载图片  
+          document.all.IframeReportImg.src = imgPathURL;  
+      }  
+      else {  
+          //图片直接另存为  
+          DoSaveAsIMG();    
+      }  
+  }  
+  function DoSaveAsIMG() {  
+      if (document.all.IframeReportImg.src != "about:blank")  
+          document.frames("IframeReportImg").document.execCommand("SaveAs");          
+  }  
   </script>

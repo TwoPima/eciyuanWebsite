@@ -111,27 +111,6 @@
 										</div>
 									</div>
 							<div class="space-4"></div>
-									<div class="form-group">
-										<label class="col-sm-2 control-label no-padding-right" for="form-field-2"></label>
-										<div class="col-sm-10">
-										<input type="radio" name="footsite" id="footsite" value="1" <if condition="$currentcategory.footsite eq 1 ">checked</if> >尾部
-										<input type="radio" name="footsite" id="footsite" value="0" <if condition="$currentcategory.footsite eq 0">checked</if> >不是尾部
-											<div class="space-4"></div>
-										<input type="radio" name="topsite" id="topsite" value="1" <if condition="$currentcategory.topsite eq 1 ">checked</if> >头部
-										<input type="radio" name="topsite" id="topsite" value="0" <if condition="$currentcategory.topsite eq 0 ">checked</if> >不是头部
-										
-																	<div class="space-4"></div>
-																	
-										<input type="radio" name="type_product" id="type_product" value="1" <if condition="$currentcategory.type_product eq 1 ">checked</if> >产品
-										<input type="radio" name="type_product" id="type_product" value="0" <if condition="$currentcategory.type_product eq 0 ">checked</if> >非产品
-																	<div class="space-4"></div>
-										<input type="radio" name="type_news" id="type_news" value="1" <if condition="$currentcategory.type_news eq 1 ">checked</if> >资讯
-										<input type="radio" name="type_news" id="type_news" value="0" <if condition="$currentcategory.type_news eq 0 ">checked</if> >非资讯
-																	<div class="space-4"></div>
-										<input type="radio" name="type_case" id="type_case" value="1"<if condition="$currentcategory.type_case eq 1">checked</if> >案例
-										<input type="radio" name="type_case" id="type_case" value="0" <if condition="$currentcategory.type_case eq 0 ">checked</if> >非案例
-										</div>
-									</div>
 									<div class="col-md-offset-2 col-md-9">
 										<button class="btn btn-info submit" type="button">
 											<i class="icon-ok bigger-110"></i>
@@ -165,15 +144,9 @@
 				var name = $("#name").val();
 				var keywords = $("#keywords").val();
 				var description = $("#description").val();
-				var name = $("#name").val();
 				var sort= $("#sort").val();
 				var link= $("#link").val();
 				var tag= $("#tag").val();
-				var type_case= $("#type_case:checked ").val();
-				var type_news= $("#type_news:checked ").val();
-				var type_product= $("#type_product:checked ").val();
-				var topsite= $("#topsite:checked ").val();
-				var footsite= $("#footsite:checked ").val();
 				if(name==''){
 					bootbox.dialog({
 						message: "抱歉，分类名称不能为空。", 
@@ -186,7 +159,7 @@
 					});
 					return;
 				}
-				$.post("{:U('update')}", {id:id,pid:pid,name:name,keywords:keywords,description:description,link:link,tag:tag,sort:sort,footsite:footsite,topsite:topsite,type_case:type_case,type_product:type_product,type_news:type_news},
+				$.post("{:U('update')}", {id:id,pid:pid,name:name,keywords:keywords,description:description,link:link,tag:tag,sort:sort},
 					function(data){
 					if(data==1){
 						bootbox.dialog({  

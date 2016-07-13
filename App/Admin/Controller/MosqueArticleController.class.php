@@ -101,7 +101,7 @@ class MosqueArticleController extends ComController {
 		$data['content'] = isset($_POST['content'])?$_POST['content']:false;
 		$data['thumbnail'] = I('post.thumbnail','','strip_tags');
 		$data['create_time'] = time();
-		if(!$data['sid'] or !$data['title'] or !$data['content']){
+		if(!$data['cateid'] or !$data['title'] or !$data['content']){
 			$this->error('警告！文章分类、文章标题及文章内容为必填项目。');
 		}
 		if($id){

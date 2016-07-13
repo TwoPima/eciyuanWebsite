@@ -106,6 +106,46 @@
 										
 									</div>
 									<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-7"> 省份</label>
+										<div class="col-sm-9">
+											<input type="text" name="s_province" id="s_province" placeholder="省份" class="col-xs-10 col-sm-5" value="{$article['s_province']}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle"></span>
+											</span>
+										</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-7"> 城市</label>
+										<div class="col-sm-9">
+											<input type="text" name="s_county" id="s_county" placeholder="s_county" class="col-xs-10 col-sm-5" value="{$article['s_county']}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle"></span>
+											</span>
+										</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-7"> 县级 </label>
+										<div class="col-sm-9">
+											<input type="text" name="s_city" id="s_city" placeholder="s_city" class="col-xs-10 col-sm-5" value="{$article['s_city']}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle"></span>
+											</span>
+										</div>
+									</div>
+									<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-7">详情地址 </label>
+										<div class="col-sm-9">
+											<input type="text" name="address" id="address" placeholder="address" class="col-xs-10 col-sm-5" value="{$article['address']}">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle"></span>
+											</span>
+										</div>
+									</div>
+									<div class="space-4"></div>
 									
 									<div class="form-group">
 										<label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 文章内容 </label>
@@ -149,6 +189,7 @@
 			$(".submit").click(function(){
 				var sid = $("#sid").val();
 				var title = $("#title").val();
+				var url = $("#url").val();
 				var content = $("#content").val();
 				if(sid==0){
 					bootbox.dialog({
@@ -176,19 +217,21 @@
 					});
 					return;
 				}
-				if(content==''){
-					bootbox.dialog({
-						title: '友情提示：',
-						message: "文章内容需要填写。", 
-						buttons: {
-							"success" : {
-								"label" : "确定",
-								"className" : "btn-danger"
+				if(url==''){
+					if(content==''){
+						bootbox.dialog({
+							title: '友情提示：',
+							message: "文章内容需要填写。", 
+							buttons: {
+								"success" : {
+									"label" : "确定",
+									"className" : "btn-danger"
+								}
 							}
-						}
-					});
-					return;
-					return;
+						});
+						return;
+						return;
+					}
 				}
 				$("#form").submit();
 			});

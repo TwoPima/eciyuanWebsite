@@ -56,8 +56,8 @@
 										<li class="list-unstyled">
 											<div class="row">
 												<a href="__URL__/detail?id={$val.aid}&type={$title}" target="_blank">
-													<div class="col-xs-3 col-sm-3"><!--__ROOT__{$val.thumbnail}  -->
-														<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="项目图片展示" src="__MOBILE__/Img/textLife.jpg"/>
+													<div class="col-xs-3 col-sm-3">
+														<img  id="blog-img" alt="Responsive image" class="img-responsive img-polaroid thumbnail" alt="{$val.title|msubstr=0,12,'utf-8',true}" src="__ROOT__{$val.thumbnail} "/>
 													</div>
 													<div class="col-xs-9 col-sm-9  blog-content">
 														<span id="">{$val.title|msubstr=0,12,'utf-8',true}</span><br>

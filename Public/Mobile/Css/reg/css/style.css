@@ -1,0 +1,187 @@
+::-moz-selection { background: #19b9e7; color: #fff; text-shadow: none; }
+::selection { background: #19b9e7; color: #fff; text-shadow: none; }
+/*-----------------------
+		企业入驻
+------------------------*/
+.cate-content i{
+	color: #FF7212;
+}
+.cate-content h4{
+	font-size: 24px;
+color: #FF7212;
+padding-top: 22px;
+}
+.cate-content p{
+font-size: 14px;
+line-height: 24px;
+color: #666666;
+margin-bottom:20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.cate-content{
+overflow: hidden;
+background: #fff;
+border-bottom-width: 5px;
+	margin:14px;
+}
+.liucheng div{
+	background: #fff;
+	
+}
+.liucheng{
+	overflow: hidden;
+		padding-left: 22px;
+	padding-right: 22px;	
+}
+.merchant_tit {
+background: url(../img/img86.jpg) no-repeat;
+width: 106px;
+height: 26px;
+color: #fff;
+line-height: 26px;
+text-align: center;
+font-size: 14px;
+}
+.floor {
+position: relative;
+width: 118px;
+height: 118px;
+background: url(../img/img87.jpg) no-repeat;
+	padding:0px;
+	margin:10px;
+}
+.fl {
+float: left;
+display: inline;
+}
+.floor span {
+display: inline-block;
+font: 20px Verdana;
+color: #fff;
+margin-top: 40px;
+margin-right:50px;
+}
+.floor div {
+color: #fff;
+position: absolute;
+z-index: 10;
+left: 50px;
+top: 40px;
+font: 14px "Microsoft Yahei";
+width: 50px;
+}
+.reg_protocol div {
+    FONT-SIZE: 7pt;
+    WIDTH: 100%;
+    HEIGHT: auto;
+    border: 1px solid #dfdfdf;
+    overflow-y: scroll;
+}
+.box > .box-header {
+    padding: 10px 20px 10px 20px;
+    border: 1px solid #CDCDCD;
+    font-weight: 400;
+    font-size: 1.2em;
+    display: block;
+}
+.box {
+    position: relative;
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 40px;
+}
+/***** Top content *****/
+
+
+.top-content .top-big-link {
+	margin-top: 35px;
+}
+
+.form-box {
+	padding-top: 40px;
+}
+
+.form-top {
+	overflow: hidden;
+	padding: 0 25px 15px 25px;
+	background: #fff;
+	-moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
+	text-align: left;
+}
+
+.form-top-left {
+	float: left;
+	width: 75%;
+	padding-top: 25px;
+}
+
+.form-top-left h3 { margin-top: 0; }
+
+.form-top-right {
+	float: left;
+	width: 25%;
+	padding-top: 5px;
+	font-size: 66px;
+	color: #ddd;
+	line-height: 100px;
+	text-align: right;
+}
+
+.form-bottom {
+	padding: 25px 25px 30px 25px;
+	background: #eee;
+	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
+	text-align: left;
+}
+
+form .form-bottom textarea {
+	height: 100px;
+}
+
+form .form-bottom button.btn {
+	min-width: 105px;
+}
+
+form .form-bottom .input-error {
+	border-color: #19b9e7;
+}
+
+form.registration-form fieldset {
+	display: none;
+}
+
+
+/***** Media queries *****/
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+@media (max-width: 767px) {
+	
+	
+	.form-bottom { padding-bottom: 25px; }
+	form .form-bottom button.btn { margin-bottom: 5px; }
+
+}
+
+@media (max-width: 415px) {
+	
+	h1, h2 { font-size: 32px; }
+
+}
+
+
+/* Retina-ize images/icons */
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) {
+	
+	
+}

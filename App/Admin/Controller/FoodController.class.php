@@ -17,7 +17,7 @@ class FoodController extends ComController {
 
 	public function add(){
 		
-		$category = M('category')->field('id,pid,name')->order('o asc')->select();
+		$category = M('FoodCategory')->field('id,pid,name')->order('sort asc')->select();
 		$tree = new Tree($category);
 		$str = "<option value=\$id \$selected>\$spacer\$name</option>"; //生成的形式
 		$category = $tree->get_tree(0,$str,0);
@@ -30,7 +30,7 @@ class FoodController extends ComController {
 		$sid = intval($sid);
 		$p = intval($p)>0?$p:1;
 		
-		$article = M('article');
+		$article = M('Food');
 		$pagesize = 20;#每页数量
 		$offset = $pagesize*($p-1);//计算记录偏移量
 		$prefix = C('DB_PREFIX');
@@ -40,7 +40,7 @@ class FoodController extends ComController {
 			$where = '';
 		}
 		$count = $article->where($where)->count();
-		$list  = $article->field("{$prefix}article.*,{$prefix}category.name")->where($where)->order("{$prefix}article.aid desc")->join("{$prefix}category ON {$prefix}category.id = {$prefix}article.sid")->limit($offset.','.$pagesize)->select();
+		$list  = $article->field("{$prefix}food.*,{$prefix}food_category.name")->where($where)->order("{$prefix}food.aid desc")->join("{$prefix}food_category ON {$prefix}food_category.id = {$prefix}food.sid")->limit($offset.','.$pagesize)->select();
 		
 		$page	=	new \Think\Page($count,$pagesize); 
 		$page = $page->show();
@@ -59,7 +59,7 @@ class FoodController extends ComController {
 			}else{
 				$map = 'aid='.$aids;
 			}
-			if(M('article')->where($map)->delete()){
+			if(M('Food')->where($map)->delete()){
 				addlog('删除文章，AID：'.$aids);
 				$this->success('恭喜，文章删除成功！');
 			}else{
@@ -74,10 +74,10 @@ class FoodController extends ComController {
 	public function edit($aid){
 		
 		$aid = intval($aid);
-		$article = M('article')->where('aid='.$aid)->find();
+		$article = M('Food')->where('aid='.$aid)->find();
 		if($article){
 			
-			$category = M('category')->field('id,pid,name')->order('o asc')->select();
+			$category = M('FoodCategory')->field('id,pid,name')->order('sort asc')->select();
 			$tree = new Tree($category);
 			$str = "<option value=\$id \$selected>\$spacer\$name</option>"; //生成的形式
 			$category = $tree->get_tree(0,$str,$article['sid']);
@@ -99,17 +99,29 @@ class FoodController extends ComController {
 		$data['keywords'] = I('post.keywords','','strip_tags');
 		$data['description'] = I('post.description','','strip_tags');
 		$data['content'] = isset($_POST['content'])?$_POST['content']:false;
+		$data['s_province'] = isset($_POST['s_province'])?trim($_POST['s_province']):'';
+		$data['s_county'] = isset($_POST['s_county'])?trim($_POST['s_county']):'';
+		$data['s_city'] = isset($_POST['s_city'])?trim($_POST['s_city']):'';
+		$data['address'] = isset($_POST['address'])?trim($_POST['address']):'';
 		$data['thumbnail'] = I('post.thumbnail','','strip_tags');
-		$data['create_time'] = time();
-		if(!$data['sid'] or !$data['title'] or !$data['content']){
-			$this->error('警告！文章分类、文章标题及文章内容为必填项目。');
+		$data['update_time'] = time();
+		if (empty($data['url'])) {
+				if(!$data['content']){
+					$this->error('警告！不是外链的文章内容为必填项目。');
+				}
 		}
+		if(!$data['sid'] or !$data['title']){
+			$this->error('警告！文章分类、文章标题为必填项目。');
+		}
+		
 		if($aid){
-			M('article')->data($data)->where('aid='.$aid)->save();
+			M('Food')->data($data)->where('aid='.$aid)->save();
 			addlog('编辑文章，AID：'.$aid);
 			$this->success('恭喜！文章编辑成功！');
 		}else{
-			$aid = M('article')->data($data)->add();
+			
+			$data['create_time'] = time();
+			$aid = M('Food')->data($data)->add();
 			if($aid){
 				addlog('新增文章，AID：'.$aid);
 				$this->success('恭喜！文章新增成功！');

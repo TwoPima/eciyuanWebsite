@@ -22,9 +22,5 @@ define('APP_DEBUG',true); // 开启调试模式
 define('BUILD_DIR_SECURE',true);
 define('DIR_SECURE_FILENAME', 'index.html');
 define('DIR_SECURE_CONTENT', 'deney Access!');
-//微信配置
-//include("weixin.php");
-define("TOKEN", "weixin");//开发模式的TOKEN码
-define('DEBUG', true);//是否开启调试模式
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';

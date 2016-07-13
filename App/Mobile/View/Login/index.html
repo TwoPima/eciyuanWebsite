@@ -20,7 +20,7 @@
 							     		 <span class="input-group-addon">
 	                                      	<i class="ace-icon fa fa-user"></i>
 	                                   </span>
-							     		<input type="text" class="form-control" name="name" placeholder="请用清真大寺名称/注册邮箱/手机号码登录" />
+							     		<input type="text" class="form-control" name="name" placeholder="请用清真寺名称/注册邮箱/手机号码登录" />
 							    </div>
 							    </div>
 							    </div>
@@ -87,31 +87,9 @@
 		<script type="text/javascript">
 			jQuery(function($) {
 				$(function(){
-				    $("#emailsubmit").click(function(){
-				        $("#form_type").val("1");
-				        if($("#emailInput").val()==''||$("#passInput").val()==''){
-				        	layer.tips('提示错误信息', this, {
-				                guide: 1,
-				                time: 1,
-				                style: ['background-color:#F26C4F; color:#fff', '#F26C4F'],
-				                maxWidth:240
-				            });
-				            return false;
-				        }
-				        return true;
-				    });
-				    $("#mobileSubmit").click(function(){
-				        $("#form_type").val("2");
-				        if($("#email").val()==''||$("#pwd").val()==''){
+				    $("#login").click(function(){
+				        if($("#email").val()==''||$("#password").val()==''){
 				            popup.alert("填写完整方可登陆");
-				            return false;
-				        }
-				        return true;
-				    });
-				    $("#findPwdSubmit").click(function(){
-				        $("#form_type").val("3");
-				        if($("#email").val()==''){
-				            popup.alert("填写了你的邮箱方可找回密码");
 				            return false;
 				        }
 				        return true;

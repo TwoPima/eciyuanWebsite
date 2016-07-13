@@ -99,16 +99,26 @@ class HousingController extends ComController {
 		$data['keywords'] = I('post.keywords','','strip_tags');
 		$data['description'] = I('post.description','','strip_tags');
 		$data['content'] = isset($_POST['content'])?$_POST['content']:false;
+		$data['s_province'] = isset($_POST['s_province'])?trim($_POST['s_province']):'';
+		$data['s_county'] = isset($_POST['s_county'])?trim($_POST['s_county']):'';
+		$data['s_city'] = isset($_POST['s_city'])?trim($_POST['s_city']):'';
+		$data['address'] = isset($_POST['address'])?trim($_POST['address']):'';
 		$data['thumbnail'] = I('post.thumbnail','','strip_tags');
-		$data['create_time'] = time();
-		if(!$data['sid'] or !$data['title'] or !$data['content']){
-			$this->error('警告！文章分类、文章标题及文章内容为必填项目。');
+		$data['update_time'] = time();
+		if (empty($data['url'])) {
+				if(!$data['content']){
+					$this->error('警告！不是外链的文章内容为必填项目。');
+				}
+		}
+		if(!$data['sid'] or !$data['title']){
+			$this->error('警告！文章分类、文章标题为必填项目。');
 		}
 		if($aid){
 			M('Housing')->data($data)->where('aid='.$aid)->save();
 			addlog('编辑文章，AID：'.$aid);
 			$this->success('恭喜！文章编辑成功！');
 		}else{
+			$data['create_time'] = time();
 			$aid = M('Housing')->data($data)->add();
 			if($aid){
 				addlog('新增文章，AID：'.$aid);

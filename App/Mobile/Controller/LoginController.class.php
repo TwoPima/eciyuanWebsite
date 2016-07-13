@@ -14,45 +14,53 @@ use Common\Controller\BaseController;
 use Think\Auth;
 class LoginController extends BaseController {
     public function index(){
-		$user=cookie('mosqueName');
-		if(!empty($user)){
+		/* if(!empty($user)){
 		    $this -> success('您已经登录,正在跳转到主页',U("Mosque/perMosque"));
-		}
+		} */
 		$this -> display();
     }
     public function login(){
 		$verify = isset($_POST['verify'])?trim($_POST['verify']):'';
 		if (!$this->check_verify($verify,'login')) {
-			$this -> error('验证码错误！',U("login/index"));
+			$this -> error('验证码错误！',U("Login/index"));
 		}
 
 		$username = isset($_POST['name'])?trim($_POST['name']):'';
 		$password = isset($_POST['password'])?password(trim($_POST['password'])):'';
 		$remember = isset($_POST['remember'])?$_POST['remember']:0;
 		if ($username=='') {
-			$this -> error('登录名不能为空！',U("login/index"));
+			$this -> error('登录名不能为空！',U("Login/index"));
 		} elseif ($password=='') {
-			$this -> error('密码必须！',U("login/index"));
+			$this -> error('密码必须！',U("Login/index"));
 		}
 
-		$model = M("Mosque");
-		$user = $model ->field('id,name')-> where(array('name'=>$username,'password'=>$password)) -> find();
+			$model = M("Mosque");
+			$where['name']=$username;
+			$where['mobile']=$username;
+			$where['email']=$username;
+			$where['_logic'] = 'OR';
+			$map['_complex'] = $where;
+			$map['password']  = $password;
+			$user = $model->where($map)->find();
+			$mosqueName=$user['name'];
+			$mosqueId=$user['id'];
 		if($user) {
 			if($remember){
-				cookie('mosqueName',$user.name,3600*24*365);//记住我
-				cookie('mosqueId',$user.id);
+				cookie('mosqueName',$mosqueName,3600*24*365);//记住我
+				cookie('mosqueId',$mosqueId,3600*24*365);
 			}else{
-				cookie('mosqueName',$user.name);
-				cookie('mosqueId',$user.id);
+				cookie('mosqueName',$mosqueName);
+				cookie('mosqueId',$mosqueId);
 			}
 			if($user){
-				addlog('登录成功。',$_POST['user']);				$url=U('Mosque/notice');
+				addlog('登录成功。',$mosqueId);			
+				$url=U('Mosque/perMosque');
 				header("Location: $url");
 				exit(0);
 			}
 		}else{
 			addlog('登录失败。',$username);
-			$this -> error('登录失败，请重试！',U("login/index"));
+			$this -> error('登录失败，请重试！',U("Login/index"));
 		}
     }
 	
@@ -86,16 +94,9 @@ class LoginController extends BaseController {
 		
 	}
 	public function loginOut() {
-		if (isset($_SESSION[C('USER_AUTH_KEY')])) {
-		//setcookie("$this->loginMarked", NULL, -3600, "/");
-		//unset($_SESSION["$this->loginMarked"], $_COOKIE["$this->loginMarked"]);
-		if (isset($_SESSION[C('USER_AUTH_KEY')])) {
-			unset($_SESSION[C('USER_AUTH_KEY')]);
-			unset($_SESSION);
-			session_destroy();
-		}
-		} 
-		$this->redirect("Index/index");
+		  cookie('mosqueName',null);
+		  cookie('mosqueId',null);
+        $this->success('退出成功',U("Mosque/index"));
 	}
 	public function getUserInfo($email,$password){
 		//得到用户信息（验证）

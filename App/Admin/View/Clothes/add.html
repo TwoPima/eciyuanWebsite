@@ -93,7 +93,21 @@
 											</span>
 										</div>
 									</div>
-									
+									<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-1 control-label no-padding-right" for="form-field-7"> 地址</label>
+										<div class="col-sm-9">
+										<select class="form-control" id="s_province" name="s_province"></select>
+							    <select class="form-control" id="s_city" name="s_city" ></select>
+							    <select class="form-control" id="s_county" name="s_county"></select>
+							    <script class="resources library " src="__MOBILE__/Js/city.js" type="text/javascript"></script>
+							    <script type="text/javascript">_init_area();</script>
+						      <input type="text" name="address" class="form-control" id="address" placeholder="请输入详细地址">
+											<span class="help-inline col-xs-12 col-sm-7">
+												<span class="middle"></span>
+											</span>
+										</div>
+									</div>
 									<div class="space-4"></div>
 									<div class="form-group">
 										<label class="col-sm-1 control-label no-padding-right" for="form-field-4"> 缩略图 </label>
@@ -151,6 +165,7 @@
 			$(".submit").click(function(){
 				var sid = $("#sid").val();
 				var title = $("#title").val();
+				var url = $("#url").val();
 				var content = $("#content").val();
 				if(sid==0){
 					bootbox.dialog({
@@ -178,23 +193,32 @@
 					});
 					return;
 				}
-				if(content==''){
-					bootbox.dialog({
-						title: '友情提示：',
-						message: "文章内容需要填写。", 
-						buttons: {
-							"success" : {
-								"label" : "确定",
-								"className" : "btn-danger"
+				if(url==''){
+					if(content==''){
+						bootbox.dialog({
+							title: '友情提示：',
+							message: "文章内容需要填写。", 
+							buttons: {
+								"success" : {
+									"label" : "确定",
+									"className" : "btn-danger"
+								}
 							}
-						}
-					});
-					return;
-					return;
+						});
+						return;
+						return;
+					}
 				}
 				$("#form").submit();
 			});
 		});
+		var Gid  = document.getElementById ;
+		var showArea = function(){
+			Gid('show').innerHTML = "<h6>省" + Gid('s_province').value + " - 市" + 	
+			Gid('s_city').value + " - 县/区" + 
+			Gid('s_county').value + "</h6>"
+									}
+		Gid('s_county').setAttribute('onchange','showArea()');
 		</script>
 	</body>
 </html>

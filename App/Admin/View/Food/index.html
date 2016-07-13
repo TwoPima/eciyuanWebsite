@@ -42,7 +42,7 @@
 											<th class="center"><input class="check-all" type="checkbox" value=""></th>
 											<th>所属分类</th>
 											<th class="col-xs-7">文章标题</th>
-											<th>发布时间</th>
+											<th>更新时间</th>
 											<th>操作</th>
 										</tr>
 									</thead>
@@ -52,8 +52,13 @@
 											<td class="center"><input class="aids" type="checkbox" name="aids[]" value="{$val['aid']}"></td>
 											<td><a href="{:U('index')}?sid={$val['sid']}" title="{$val['name']}">{$val['name']}</a></td>
 											<td>{$val['title']}</td>
-											<td>{$val['t']|date="Y-m-d H:i:s",###}</td>
-											<td><a href="{:U(edit)}?aid={$val['aid']}"><i class="ace-icon fa fa-pencil bigger-100"></i>修改</a>&nbsp&nbsp;<a href="javascript:;" val="{:U('del')}?aids={$val['aid']}" class="del"><i class="ace-icon fa fa-trash-o bigger-100 red"></i>删除</a></td>
+											<td>{$val['update_time']|date="Y-m-d H:i:s",###}</td>
+											<td>
+											<if condition="$val['status'] eq 1">  
+												 	<a  href="javascript:;" val="{:U('status')}?id={$val['aid']}&val={$val['status']}" title="审核"class="status">请审核</a>
+												 	<else /> <a  href="javascript:;" val="{:U('status')}?id={$val['aid']}&val={$val['status']}" title="审核" class="status">已审核</a>
+												 	</if>
+											<a href="{:U(edit)}?aid={$val['aid']}"><i class="ace-icon fa fa-pencil bigger-100"></i>修改</a>&nbsp&nbsp;<a href="javascript:;" val="{:U('del')}?aids={$val['aid']}" class="del"><i class="ace-icon fa fa-trash-o bigger-100 red"></i>删除</a></td>
 										</tr>
 									</volist>
 									</tbody>
@@ -114,6 +119,25 @@
 				bootbox.confirm({
 					title: "系统提示",
 					message: "是否要该文章？", 
+					callback:function(result){
+						if(result){
+							window.location.href = url;
+						}
+					},
+					buttons: {
+						"cancel" : {"label" : "取消"},
+						"confirm" : {
+								"label" : "确定",
+								"className" : "btn-danger"
+							}
+					}
+				});
+			});
+			$(".status").click(function(){
+				var url = $(this).attr('val');
+				bootbox.confirm({
+					title: "系统提示",
+					message: "是否要审核通过该项?", 
 					callback:function(result){
 						if(result){
 							window.location.href = url;

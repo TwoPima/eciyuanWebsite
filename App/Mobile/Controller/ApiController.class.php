@@ -24,9 +24,9 @@ class ApiController extends Controller{
     public function index($id = ''){
         //调试
         try{
-            $appid = 'wxb6bea494a788b816'; //AppID(应用ID)
-            $token = 'weixin'; //微信后台填写的TOKEN
-            $crypt = 'q6FPCUoCQWaOiR3UUe5RfQu8A7hlJcMW4BnNyH9z2il'; //消息加密KEY（EncodingAESKey）
+            $appid =C('APPID'); //AppID(应用ID)
+            $token = C('TOKEN'); //微信后台填写的TOKEN
+            $crypt = C('AESKEY'); //消息加密KEY（EncodingAESKey）
             
             /* 加载微信SDK */
             $wechat = new Wechat($token, $appid, $crypt);
@@ -81,7 +81,7 @@ class ApiController extends Controller{
                 $this->demo($wechat, $data);
             }
         } catch(\Exception $e){
-            file_put_contents('./error.json', json_encode($e->getMessage()));
+            file_put_contents('./Public/Mobile/Data/error.json', json_encode($e->getMessage()));
         }
         
     }
@@ -98,27 +98,73 @@ class ApiController extends Controller{
                 switch ($data['Event']) {
                     case Wechat::MSG_EVENT_SUBSCRIBE:
                         //关注
-                        $wechat->replyText('欢迎您关注伊媒微时代公众平台！一家专注于做穆斯林服务的公众平台。您可回复“新闻”，“入驻清真寺”，“听歌”+“歌名”听音乐，“城市”+“天气”查看天气等信息！希望给您的生活带来便利');
+                    	$contentStr = "感谢您关注【伊媒微时代】"."\n"."微信号：selanyimei"."\n"."一家专注于做穆斯林服务的公众平台！".
+                    	"\n"."目前平台功能如下："."\n"."【1】 查天气，如输入：银川天气"."\n"."【2】 听音乐，如输入：听歌兰花花"."\n".
+                    	"【3】 翻译，如输入：翻译I love you"."\n".
+                    	"【4】 看新闻，如输入：新闻"."\n"."更多内容，敬请期待...";
+                        $wechat->replyText($contentStr);//."【2】 查公交，如输入：银川公交101"."\n"
                         break;
 
                     case Wechat::MSG_EVENT_UNSUBSCRIBE:
                         //取消关注，记录日志
+                    	addlog('取消关注：'.$aids);
+                    	$replyMsg = "再见！朋友！";
+                    	$replyXml = "<xml>
+								<ToUserName><![CDATA[%s]]></ToUserName>
+								<FromUserName><![CDATA[%s]]></FromUserName>
+								<CreateTime>%s</CreateTime>
+								<MsgType><![CDATA[text]]></MsgType>
+								<Content><![CDATA[%s]]></Content>
+								</xml>";
+                        break;
+
+                    case Wechat::MSG_EVENT_SCAN:
+                        //扫描二维码
+                    	$replyMsg = "再见！朋友！";
+                    	$replyXml = "<xml>
+								<ToUserName><![CDATA[%s]]></ToUserName>
+								<FromUserName><![CDATA[%s]]></FromUserName>
+								<CreateTime>%s</CreateTime>
+								<MsgType><![CDATA[text]]></MsgType>
+								<Content><![CDATA[%s]]></Content>
+								</xml>";
                         break;
 
                     default:
-                        $wechat->replyText("欢迎访问伊媒微时代公众平台！一家专注于做穆斯林服务的公众平台。您可回复“新闻”，“清真寺”，“听歌”+“歌名”听音乐，“城市”+“天气”查看天气等信息！希望给您的生活带来便利");
+                    	$contentStr = "欢迎访问伊媒微时代公众平台"."\n"."微信号：selanyimei"."\n"."一家专注于做穆斯林服务的公众平台！".
+                    			"\n"."可体验以下功能："."\n"."【1】 查天气，如输入：银川天气"."\n"."【2】 听音乐，如输入：听歌兰花花"."\n".
+                    			"【3】 翻译，如输入：翻译I love you"."\n".
+                    			"【4】看新闻，如输入：新闻"."\n"."更多内容，敬请期待...";
+                        $wechat->replyText($contentStr);
                         break;
                 }
                 break;
-
+			//10种消息类型
             case Wechat::MSG_TYPE_TEXT:
                 //回复信息
                 switch ($data['Content']) {
                     case '入驻清真寺':
-                        //模板调用常量{$Think.CONFIG.UPDATE_URL}   
+                    	session_start();
+                        //模板调用常量{$Think.CONFIG.WEIXIN_LUNTAN}   
                         $url = C('ADD_MOSQUE_URL');
+                        //请求获取用户基本信息接口的地址
+                        $postData = $GLOBALS[HTTP_RAW_POST_DATA];
+                        if(!$postData)
+                        {
+                        	echo  "error";
+                        	exit();
+                        }
+                        $object = simplexml_load_string($postData,"SimpleXMLElement",LIBXML_NOCDATA);
+						$openid = $object->FromUserName;
+                        session('openID',$openid);
+                        session('Name',"woshizhong");
+                        $id=session('openID');
                         $content = '<a href="'.$url.'">点击入驻清真寺</a>';
-                        $wechat->replyText('欢迎访问伊媒微时代公众平台，'."$content");
+                        $wechat->replyText('欢迎访问伊媒微时代公众平台，'."$content".$id);
+                        break;
+                    case '快递查询':
+                         $content = kuaidi($data['Content']);
+              			 $type = 'text';
                         break;
 
                     case '图片':
@@ -173,7 +219,11 @@ class ApiController extends Controller{
                         break;
                     
                     default:
-                        $wechat->replyText("欢迎访问伊媒微时代公众平台！您输入的内容已经提交管理中心，请您稍等。同时在您等待的时候，可体验以下的功能：回复“新闻”，“清真寺”，“听歌”+“歌名”听音乐，“城市”+“天气”查看天气等信息！希望给您的生活带来便利！");
+                    	$contentStr = "欢迎访问伊媒微时代公众平台"."\n"."微信号：selanyimei"."\n"."一家专注于做穆斯林服务的公众平台！".
+                    			"\n"."可体验以下功能："."\n"."【1】 查天气，如输入：银川天气"."\n"."【2】 听音乐，如输入：听歌兰花花"."\n".
+                    			"【3】 翻译，如输入：翻译I love you"."\n".
+                    			"【4】 看新闻，如输入：新闻"."\n"."更多内容，敬请期待...";
+                        $wechat->replyText($contentStr);
                         break;
                 }
                 break;
